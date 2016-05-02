@@ -13,74 +13,74 @@ public class ReflectionUtils {
 	
 	private static String _versionString;
  
-    public static Class<?> getCraftClass(String ClassName) {
-        String name = Bukkit.getServer().getClass().getPackage().getName();
-        String version = name.substring(name.lastIndexOf('.') + 1) + ".";
-        String className = "net.minecraft.server." + version + ClassName;
-        Class<?> c = null;
-        try {
-            c = Class.forName(className);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return c;
-    }
+	public static Class<?> getCraftClass(String ClassName) {
+		String name = Bukkit.getServer().getClass().getPackage().getName();
+		String version = name.substring(name.lastIndexOf('.') + 1) + ".";
+		String className = "net.minecraft.server." + version + ClassName;
+		Class<?> c = null;
+		try {
+			c = Class.forName(className);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return c;
+	}
  
-    public static Object getHandle(Object entity) {
-        Object nms_entity = null;
-        Method entity_getHandle = getMethod(entity.getClass(), "getHandle");
-        try {
-            nms_entity = entity_getHandle.invoke(entity);
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        return nms_entity;
-    }
+	public static Object getHandle(Object entity) {
+		Object nms_entity = null;
+		Method entity_getHandle = getMethod(entity.getClass(), "getHandle");
+		try {
+			nms_entity = entity_getHandle.invoke(entity);
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return nms_entity;
+	}
  
-    public static Field getField(Class<?> cl, String field_name) {
-        try {
-            Field field = cl.getDeclaredField(field_name);
-            return field;
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+	public static Field getField(Class<?> cl, String field_name) {
+		try {
+			Field field = cl.getDeclaredField(field_name);
+			return field;
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (NoSuchFieldException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
  
-    public static Method getMethod(Class<?> cl, String method, Class<?>[] args) {
-        for (Method m : cl.getMethods()) {
-            if (m.getName().equals(method)
-                    && ClassListEqual(args, m.getParameterTypes())) {
-                return m;
-            }
-        }
-        return null;
-    }
+	public static Method getMethod(Class<?> cl, String method, Class<?>[] args) {
+		for (Method m : cl.getMethods()) {
+			if (m.getName().equals(method)
+					&& ClassListEqual(args, m.getParameterTypes())) {
+				return m;
+			}
+		}
+		return null;
+	}
  
-    public static Method getMethod(Class<?> cl, String method, Integer args) {
-        for (Method m : cl.getMethods()) {
-            if (m.getName().equals(method)
-                    && args.equals(Integer.valueOf(m.getParameterTypes().length))) {
-                return m;
-            }
-        }
-        return null;
-    }
+	public static Method getMethod(Class<?> cl, String method, Integer args) {
+		for (Method m : cl.getMethods()) {
+			if (m.getName().equals(method)
+					&& args.equals(Integer.valueOf(m.getParameterTypes().length))) {
+				return m;
+			}
+		}
+		return null;
+	}
  
-    public static Method getMethod(Class<?> cl, String method) {
-        for (Method m : cl.getMethods()) {
-            if (m.getName().equals(method)) {
-                return m;
-            }
-        }
-        return null;
-    }
+	public static Method getMethod(Class<?> cl, String method) {
+		for (Method m : cl.getMethods()) {
+			if (m.getName().equals(method)) {
+				return m;
+			}
+		}
+		return null;
+	}
     
 	public static Method getTypedMethod(Class<?> cl, String method, Class<?> type, Class<?>... params) {
 		for (final Method m : cl.getDeclaredMethods()) {
@@ -91,52 +91,52 @@ public class ReflectionUtils {
 			}
 		}
 		return null;
-    }
+	}
     
 	public static Object getConstructor(Class<?> clazz, Object... params) {
-	    for (java.lang.reflect.Constructor<?> cons : clazz.getDeclaredConstructors()) {
-	    	if (Arrays.equals(cons.getParameterTypes(), params)) {
-		    	cons.setAccessible(true);
+		for (java.lang.reflect.Constructor<?> cons : clazz.getDeclaredConstructors()) {
+			if (Arrays.equals(cons.getParameterTypes(), params)) {
+				cons.setAccessible(true);
 		    	
-		    	try {
+				try {
 					return cons.newInstance(params);
 				} catch (InstantiationException | IllegalAccessException 
 						| IllegalArgumentException| InvocationTargetException e) {
 					e.printStackTrace();
 				}
-	    	}
-	    }
+			}
+		}
 		return null;
 	}
  
-    public static void setValue(Object instance, String fieldName, Object value)
-            throws Exception {
-        Field field = instance.getClass().getDeclaredField(fieldName);
-        field.setAccessible(true);
-        field.set(instance, value);
-    }
+	public static void setValue(Object instance, String fieldName, Object value)
+			throws Exception {
+		Field field = instance.getClass().getDeclaredField(fieldName);
+		field.setAccessible(true);
+		field.set(instance, value);
+	}
  
-    public static Object getValue(Object instance, String fieldName)
-            throws Exception {
-        Field field = instance.getClass().getDeclaredField(fieldName);
-        field.setAccessible(true);
-        return field.get(instance);
-    }
+	public static Object getValue(Object instance, String fieldName)
+			throws Exception {
+		Field field = instance.getClass().getDeclaredField(fieldName);
+		field.setAccessible(true);
+		return field.get(instance);
+	}
  
-    public static boolean ClassListEqual(Class<?>[] l1, Class<?>[] l2) {
-        boolean equal = true;
+	public static boolean ClassListEqual(Class<?>[] l1, Class<?>[] l2) {
+		boolean equal = true;
  
-        if (l1.length != l2.length)
-            return false;
-        for (int i = 0; i < l1.length; i++) {
-            if (l1[i] != l2[i]) {
-                equal = false;
-                break;
-            }
-        }
+		if (l1.length != l2.length)
+			return false;
+		for (int i = 0; i < l1.length; i++) {
+			if (l1[i] != l2[i]) {
+				equal = false;
+				break;
+			}
+		}
  
-        return equal;
-    }
+		return equal;
+	}
     
 	public synchronized static String getVersion() {
 		if(_versionString == null){

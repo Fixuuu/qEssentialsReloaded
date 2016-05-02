@@ -38,27 +38,27 @@ public class PacketEssential {
 	}
 	
 	public static void sendPacketRadius(Location loc, int radius, Object packet) {
-        for (Player p : loc.getWorld().getPlayers()) {
-            if (loc.distanceSquared(p.getLocation()) < (radius * radius)) {
-                sendPacket(p, packet);
-            }
-        }
-    }
+		for (Player p : loc.getWorld().getPlayers()) {
+			if (loc.distanceSquared(p.getLocation()) < (radius * radius)) {
+				sendPacket(p, packet);
+			}
+		}
+	}
  
-    public static void sendPacket(List<Player> players, Object packet) {
-        for (Player p : players) {
-            sendPacket(p, packet);
-        }
-    }
+	public static void sendPacket(List<Player> players, Object packet) {
+		for (Player p : players) {
+			sendPacket(p, packet);
+		}
+	}
  
-    public static void sendPacket(Player p, Object packet) {
-        try {
-            getPlayerConnection(p).sendPacket((Packet<?>) packet);
-        } catch (SecurityException e) {
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        }
-    }
+	public static void sendPacket(Player p, Object packet) {
+		try {
+			getPlayerConnection(p).sendPacket((Packet<?>) packet);
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
