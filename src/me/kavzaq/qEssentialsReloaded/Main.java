@@ -45,7 +45,6 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.TpaCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WeatherCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WhoIsCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.WorldCommand;
-import me.kavzaq.qEssentialsReloaded.commands.qessentials.QEssentialsDeveloper;
 import me.kavzaq.qEssentialsReloaded.database.SQLite;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
@@ -211,7 +210,6 @@ public class Main extends JavaPlugin{
 		pm.registerEvents(new FoodLevelChangeListener(), this);
 		pm.registerEvents(new SignChangeListener(), this);
 		l.info("[qEssentialsReloaded] Registering commands...");
-		CommandManager.registerCommand(new QEssentialsDeveloper());
 		CommandManager.registerCommand(new GameModeCommand());
 		CommandManager.registerCommand(new BroadcastCommand());
 		CommandManager.registerCommand(new HealCommand());

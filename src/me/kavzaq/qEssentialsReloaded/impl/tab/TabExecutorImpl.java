@@ -11,6 +11,10 @@ import me.kavzaq.qEssentialsReloaded.interfaces.tab.TabExecutor;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class TabExecutorImpl implements TabExecutor {
+	
+	// zapomnialem dodac ze podjebane od karolka, 
+	// moze sie nie obrazi, i tak jego projekt pierdolnal.
+	// no ni chuja wiedzialem jak to zrobic :c
 
 	public String[][] tabslots = new String[20][4];
 	private static final GameProfile[][] gameprofiles = new GameProfile[20][4];
@@ -18,7 +22,7 @@ public class TabExecutorImpl implements TabExecutor {
 	public void loadTab() {
 		for (int rows = 0; rows < 20; rows++) {
 			for (int columns = 0; columns < 4; columns++) {
-                String d = "#invalid.ver#" + columns + rows;
+				String d = "#invalid.ver#" + columns + rows;
 				gameprofiles[rows][columns] = new GameProfile(UUID.randomUUID(), d);
 			}
 		}
@@ -27,12 +31,12 @@ public class TabExecutorImpl implements TabExecutor {
 	@Override
 	public void executeTab(Player player) {
 		for (int columns = 0; columns < 4; columns++) {
-            for (int rows = 0; rows < 20; rows++) {
-                String slot = tabslots[rows][columns];
-                GameProfile gp = gameprofiles[rows][columns];
-                Main.getTabManager().sendPacket(player, gp, slot, "ADD_PLAYER");
-            }
-        }
+			for (int rows = 0; rows < 20; rows++) {
+				String slot = tabslots[rows][columns];
+				GameProfile gp = gameprofiles[rows][columns];
+				Main.getTabManager().sendPacket(player, gp, slot, "ADD_PLAYER");
+			}
+		}
 	}
 
 	@Override
@@ -48,12 +52,11 @@ public class TabExecutorImpl implements TabExecutor {
 
 	@Override
 	public void clearTab(Player player) {
-        for (int columns = 0; columns < 4; columns++) {
-            for (int rows = 0; rows < 20; rows++) {
-                this.tabslots[rows][columns] = "";
-            }
-        }
-		
+		for (int columns = 0; columns < 4; columns++) {
+			for (int rows = 0; rows < 20; rows++) {
+				this.tabslots[rows][columns] = "";
+			}
+		}
 	}
 
 	@Override
