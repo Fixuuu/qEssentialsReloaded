@@ -1,0 +1,42 @@
+####################################################
+##                                                ##
+##                  qEssentials                   ##
+##                 Configuration                  ##
+##                                                ##
+####################################################
+# Messages language. 
+# Available: pl, en, de
+language: pl
+# Help page length (commands per page)
+help-page-length: 10
+####################################################
+##                  Teleporting                   ##
+####################################################
+# Delay after command execute. In seconds.
+delay: 10
+
+####################################################
+##                     Homes                      ##
+####################################################
+# Maximum amount of homes
+max-homes: 3
+
+####################################################
+##                     Chat                       ##
+####################################################
+# Default chat format
+chat-format: "&8[&c{HEALTH}/10.0&8] &8[&e{FOOD}/10&8] &7{PLAYER}&8: &f{MESSAGE}"
+# Chat slowdown (in seconds)
+chat-slowdown: 3
+
+####################################################
+##                     Kits                       ##
+####################################################
+kits:
+  custom:
+    cooldown: 20
+    items:
+      - 'apple 5 Custom_Apple This_is;&dcolored_lore fireaspect:1;sharpness:3'
+      - 'diamond_sword 1 &6&lExcalibur &eMagic_sword_from;&eThe_dark_sides_of;&ethe_world fireaspect:10;sharpness:10;unbreaking:10'
+  
+# End of file -> Seriously... stop, this is stupid.
