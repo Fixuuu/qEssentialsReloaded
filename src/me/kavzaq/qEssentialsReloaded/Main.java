@@ -1,6 +1,7 @@
 package me.kavzaq.qEssentialsReloaded;
 
 import java.io.IOException;
+import java.util.Random;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
@@ -64,6 +65,7 @@ import me.kavzaq.qEssentialsReloaded.listeners.FoodLevelChangeListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerJoinListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerMoveListener;
 import me.kavzaq.qEssentialsReloaded.listeners.SignChangeListener;
+import me.kavzaq.qEssentialsReloaded.runnables.AutoMessageTask;
 import me.kavzaq.qEssentialsReloaded.utils.EnchantmentUtils;
 import me.kavzaq.qEssentialsReloaded.utils.PaginatorUtils;
 import net.milkbowl.vault.chat.Chat;
@@ -81,6 +83,7 @@ public class Main extends JavaPlugin{
 	private static TeleportUpdaterImpl teleportupdater;
 	private static MessageContainerImpl messagecontainer;
 	private static KitManagerImpl kitmanager;
+	private static Random random;
 	private static Logger l = Bukkit.getLogger();
 	
 	// Vault
@@ -113,6 +116,10 @@ public class Main extends JavaPlugin{
 	
 	private long startTime;
 	private long loadTime;
+	
+	public static Random getRandom() {
+		return random;
+	}
 	
 	public static Main getInstance() {
 		return inst;
@@ -245,6 +252,8 @@ public class Main extends JavaPlugin{
 		CommandManager.registerCommand(new ThunderAlias());
 		CommandManager.registerCommand(new SunAlias());
 		CommandManager.registerCommand(new NightAlias());
+		l.info("[qEssentialsReloaded] Starting tasks...");
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new AutoMessageTask(), 0L, getConfig().getLong("automessage-delay") * 20);
 		l.info("[qEssentialsReloaded] Preloading tab...");
 		Main.getTabExecutor().loadTab();
 		l.info("[qEssentialsReloaded] Configuring help paged map...");

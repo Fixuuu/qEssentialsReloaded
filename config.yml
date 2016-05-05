@@ -38,5 +38,16 @@ kits:
     items:
       - 'apple 5 Custom_Apple This_is;&dcolored_lore fireaspect:1;sharpness:3'
       - 'diamond_sword 1 &6&lExcalibur &eMagic_sword_from;&eThe_dark_sides_of;&ethe_world fireaspect:10;sharpness:10;unbreaking:10'
+
+####################################################
+##                  AutoMessage                   ##
+####################################################
+# delay between messages in seconds
+automessage-delay: 35
+# messages
+automessages:
+  - '&aPrzykladowa wiadomosc #1'
+  - '&bPrzykladowa wiadomosc #2'
+  - '&cPrzykladowa wiadomosc #3'
   
 # End of file -> Seriously... stop, this is stupid.
