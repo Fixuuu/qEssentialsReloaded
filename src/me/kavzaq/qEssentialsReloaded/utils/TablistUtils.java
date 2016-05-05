@@ -1,7 +1,6 @@
 package me.kavzaq.qEssentialsReloaded.utils;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -14,6 +13,9 @@ import com.google.common.collect.Lists;
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
+import net.dzikoysk.funnyguilds.basic.User;
+import net.dzikoysk.funnyguilds.util.Parser;
+import net.dzikoysk.funnyguilds.util.runnable.Ticking;
 
 public class TablistUtils {
 	
@@ -63,18 +65,6 @@ public class TablistUtils {
 		Main.getTabManager().sendPacketHeaderFooter(p, 
 				TabConfigurationImpl.tablistHeader, TabConfigurationImpl.tablistFooter);
 
-		
-		List<String> strings = new ArrayList<String>();
-		for(Field f : TabConfigurationImpl.class.getFields()) {
-			String name = f.getName();
-			if(name.startsWith("tabSlot_")) {
-				try {
-					strings.add(f.get(f.getName()).toString());
-				} catch (IllegalArgumentException | IllegalAccessException ex) {
-					ex.printStackTrace();
-				}
-			}
-		}
 		int message = 0;
 		for (int i = 0; i <= 19; i++) {
 			Main.getTabExecutor().addSlot(p, i, 0, Util.fixColors(replaceVariables(p, strings.get(message))));
@@ -119,6 +109,8 @@ public class TablistUtils {
 	// {ONLINE}
 	
 	// VARIABLE SUPPORT FROM GUILDS, RANKINGS ITD. WILL BE ADDED SOON (WHEN PLUGINS ON 1.9 WILL COME ON)
+	// variable support now:
+	//   - FunnyGuilds
 	
 	public static String replaceVariables(Player player, String string) {
 		Calendar cal = Calendar.getInstance();
@@ -148,26 +140,19 @@ public class TablistUtils {
 		string = StringUtils.replace(string, "{OP}", BooleanUtils.getParsedBooleanYesNo(player.isOp()));
 		string = StringUtils.replace(string, "{GOD}", BooleanUtils.getParsedBooleanYesNo(user.isGod()));
 		string = StringUtils.replace(string, "{WHITELISTED}", BooleanUtils.getParsedBooleanYesNo(player.isWhitelisted()));
+		if (Main.funnyguilds_support) {
+			User fgu = User.get(player);
+			string = StringUtils.replace(string, "{TPS}", Ticking.getTPS());
+			string = StringUtils.replace(string, "{PING}", Integer.toString(fgu.getPing()));
+			string = StringUtils.replace(string, "{POINTS}", Integer.toString(fgu.getRank().getPoints()));
+			string = StringUtils.replace(string, "{KILLS}", Integer.toString(fgu.getRank().getKills()));
+			string = StringUtils.replace(string, "{DEATHS}", Integer.toString(fgu.getRank().getDeaths()));
+			
+			String parsedRank = Parser.parseRank(string);
+			if (parsedRank != null) string = parsedRank;
+		}
 		return string;
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

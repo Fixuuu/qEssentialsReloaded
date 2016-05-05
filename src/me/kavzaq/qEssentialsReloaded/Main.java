@@ -71,6 +71,7 @@ import me.kavzaq.qEssentialsReloaded.listeners.PlayerQuitListener;
 import me.kavzaq.qEssentialsReloaded.listeners.SignChangeListener;
 import me.kavzaq.qEssentialsReloaded.runnables.AutoMessageTask;
 import me.kavzaq.qEssentialsReloaded.runnables.TablistRefreshTask;
+import me.kavzaq.qEssentialsReloaded.runnables.metrics.MetricsCollector;
 import me.kavzaq.qEssentialsReloaded.utils.EnchantmentUtils;
 import me.kavzaq.qEssentialsReloaded.utils.PaginatorUtils;
 import me.kavzaq.qEssentialsReloaded.utils.TablistUtils;
@@ -79,6 +80,7 @@ import net.milkbowl.vault.economy.Economy;
 
 public class Main extends JavaPlugin{
 	
+	private static Metrics metrics;
 	private static Main inst;
 	private static UserManagerImpl userManager;
 	private static MessagesImpl messages;
@@ -91,6 +93,9 @@ public class Main extends JavaPlugin{
 	private static KitManagerImpl kitmanager;
 	private static Random random;
 	private static Logger l = Bukkit.getLogger();
+	
+	// FunnyGuilds
+	public static boolean funnyguilds_support = false;
 	
 	// Vault
 	public static Economy economy = null;
@@ -125,6 +130,10 @@ public class Main extends JavaPlugin{
 	
 	public static Random getRandom() {
 		return random;
+	}
+	
+	public static Metrics getMetrics() {
+		return metrics;
 	}
 	
 	public static Main getInstance() {
@@ -197,6 +206,15 @@ public class Main extends JavaPlugin{
 		startTime = System.currentTimeMillis();
 		l.info("[qEssentialsReloaded] Loading resources...");
 		l.info("[qEssentialsReloaded] Doing some miscellaneous work...");
+		l.info("[qEssentialsReloaded] [Misc] Loading FunnyGuilds optionally...");
+		Plugin fg = Bukkit.getPluginManager().getPlugin("FunnyGuilds");
+		if ((!fg.isEnabled() || (fg == null))) {
+			l.info("[qEssentialsReloaded] [Misc] FunnyGuilds missing, disabling tab variables...");
+		}
+		else {
+			l.info("[qEssentialsReloaded] [Misc] FunnyGuilds found, enabling tab variables...");
+			funnyguilds_support = true;
+		}
 		l.info("[qEssentialsReloaded] [Misc] Loading Vault optionally...");
 		Plugin vault = Bukkit.getPluginManager().getPlugin("Vault");
 		if ((!vault.isEnabled() || (vault == null))) {
@@ -263,9 +281,17 @@ public class Main extends JavaPlugin{
 		CommandManager.registerCommand(new ThunderAlias());
 		CommandManager.registerCommand(new SunAlias());
 		CommandManager.registerCommand(new NightAlias());
+		l.info("[qEssentialsReloaded] [Metrics] Instantiating metrics...");
+		try {
+			metrics = new Metrics(this);
+			l.info("[qEssentialsReloaded] [Metrics] Successfully instantiated metrics!");
+		} catch (IOException e) {
+			l.info("[qEssentialsReloaded] [Metrics] Failed to instantiate the metrics!");
+		}
 		l.info("[qEssentialsReloaded] Starting tasks...");
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new AutoMessageTask(), 0L, getConfig().getLong("automessage-delay") * 20);
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TablistRefreshTask(), 0L, TabConfigurationImpl.tablistRefreshTime * 20);
+		Bukkit.getScheduler().runTaskLaterAsynchronously(this, new MetricsCollector(), 20L);
 		l.info("[qEssentialsReloaded] Preloading tab...");
 		Main.getTabExecutor().loadTab();
 		l.info("[qEssentialsReloaded] Configuring help paged map...");
@@ -277,13 +303,6 @@ public class Main extends JavaPlugin{
 		l.info("[qEssentialsReloaded] Loading kits...");
 		Main.getKitManager().load();
 		loadTime = System.currentTimeMillis() - startTime;
-		try {
-			Metrics metrics = new Metrics(this);
-			metrics.start();
-			l.info("[qEssentialsReloaded] [Metrics] Successfully instantiated metrics!");
-		} catch (IOException e) {
-			l.info("[qEssentialsReloaded] [Metrics] Failed to instantiate the metrics!");
-		}
 		l.info("[qEssentialsReloaded] Completed successfuly! (" + (loadTime) + "ms)");
 	
 	}
