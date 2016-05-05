@@ -9,6 +9,9 @@
 language: pl
 # Help page length (commands per page)
 help-page-length: 10
+# Quit/Join formats
+quit-format: '&c{PLAYER} left the game.'
+join-format: '&a{PLAYER} joined the game.'
 ####################################################
 ##                  Teleporting                   ##
 ####################################################
@@ -46,8 +49,8 @@ kits:
 automessage-delay: 35
 # messages
 automessages:
-  - '&aPrzykladowa wiadomosc #1'
-  - '&bPrzykladowa wiadomosc #2'
-  - '&cPrzykladowa wiadomosc #3'
+  - '&aDefault message #1'
+  - '&bDefault message #2'
+  - '&cDefault message #3'
   
 # End of file -> Seriously... stop, this is stupid.

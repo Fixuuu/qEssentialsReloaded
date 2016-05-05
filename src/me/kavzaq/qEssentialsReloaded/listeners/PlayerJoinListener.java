@@ -7,6 +7,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.interfaces.User;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class PlayerJoinListener implements Listener{
 
@@ -14,6 +15,11 @@ public class PlayerJoinListener implements Listener{
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
 		User u = Main.getUserManager().getUser(p);
+		
+		String joinMessage = Main.getInstance().getConfig().getString("join-format");
+		joinMessage = joinMessage.replace("{PLAYER}", e.getPlayer().getName());
+		joinMessage = joinMessage.replace("{DISPLAYNAME}", e.getPlayer().getDisplayName());
+		e.setJoinMessage(Util.fixColors(joinMessage));
 		
 		if (u == null) {
 			u = Main.getUserManager().implementUser(p);

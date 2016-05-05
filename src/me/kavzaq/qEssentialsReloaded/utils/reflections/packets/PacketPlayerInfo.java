@@ -28,7 +28,7 @@ public class PacketPlayerInfo {
 		try {
 			return cons.newInstance(PACKET_PLAY_OUT_PLAYER_INFO_CONSTRUCTOR, 
 					gp, 
-					9999, 
+					30, 
 					Enum.valueOf((Class<Enum>) PacketEssential.WORLD_SETTINGS$ENUM_GAMEMODE, "SURVIVAL"), 
 					JSONPacketBuilder.build("{\"text\": \"" + Util.fixColors(slot) + "\"}"));
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException

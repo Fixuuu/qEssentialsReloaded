@@ -64,6 +64,7 @@ import me.kavzaq.qEssentialsReloaded.listeners.EntityDamageListener;
 import me.kavzaq.qEssentialsReloaded.listeners.FoodLevelChangeListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerJoinListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerMoveListener;
+import me.kavzaq.qEssentialsReloaded.listeners.PlayerQuitListener;
 import me.kavzaq.qEssentialsReloaded.listeners.SignChangeListener;
 import me.kavzaq.qEssentialsReloaded.runnables.AutoMessageTask;
 import me.kavzaq.qEssentialsReloaded.utils.EnchantmentUtils;
@@ -211,6 +212,7 @@ public class Main extends JavaPlugin{
 		l.info("[qEssentialsReloaded] Registering listeners...");
 		PluginManager pm = Bukkit.getPluginManager();
 		pm.registerEvents(new PlayerJoinListener(), this);
+		pm.registerEvents(new PlayerQuitListener(), this);
 		pm.registerEvents(new PlayerMoveListener(), this);
 		pm.registerEvents(new AsyncPlayerChatListener(), this);
 		pm.registerEvents(new EntityDamageListener(), this);
