@@ -49,6 +49,7 @@ import me.kavzaq.qEssentialsReloaded.database.SQLite;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
+import me.kavzaq.qEssentialsReloaded.impl.UpdaterImpl;
 import me.kavzaq.qEssentialsReloaded.impl.managers.KitManagerImpl;
 import me.kavzaq.qEssentialsReloaded.impl.managers.UserManagerImpl;
 import me.kavzaq.qEssentialsReloaded.impl.message.MessageContainerImpl;
@@ -301,6 +302,18 @@ public class Main extends JavaPlugin{
 		Main.getKitManager().load();
 		loadTime = System.currentTimeMillis() - startTime;
 		l.info("[qEssentialsReloaded] Completed successfuly! (" + (loadTime) + "ms)");
+
+		UpdaterImpl.checkUpdate();
+		if (!UpdaterImpl.isUpdated()) {
+			l.info("[qEssentialsReloaded] [Updater] New version is available!");
+			l.info("[qEssentialsReloaded] [Updater]   Newest version: " + UpdaterImpl.getNewestVersion());
+			l.info("[qEssentialsReloaded] [Updater]   Current version: " + UpdaterImpl.getCurrentVersion());
+			l.info("[qEssentialsReloaded] [Updater] Please update it on github.com/xVacuum/qEssentialsReloaded/releases");
+			l.info("[qEssentialsReloaded] [Updater] It's important.");
+		}
+		else {
+			l.info("[qEssentialsReloaded] [Updater] You have a current version of qEssentialsReloaded!");
+		}
 	
 	}
 }

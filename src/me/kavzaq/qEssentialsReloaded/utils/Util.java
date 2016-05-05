@@ -1,13 +1,16 @@
 package me.kavzaq.qEssentialsReloaded.utils;
 
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.net.URL;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -29,6 +32,16 @@ public class Util {
 		final List<String> list = Lists.newArrayList();
 		for (String str : coloredList) list.add(fixColors(str));
 		return list;
+	}
+	
+	public static String readUrl(String url) throws Exception {
+		InputStream in = new URL(url).openStream();
+
+		try {
+			return IOUtils.toString(in);
+		} finally {
+			IOUtils.closeQuietly(in);
+		}
 	}
 	
 	public static boolean isFieldList(Field field)

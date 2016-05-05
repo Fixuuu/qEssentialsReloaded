@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
+import me.kavzaq.qEssentialsReloaded.impl.UpdaterImpl;
 import me.kavzaq.qEssentialsReloaded.interfaces.User;
 import me.kavzaq.qEssentialsReloaded.utils.TablistUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
@@ -35,5 +36,17 @@ public class PlayerJoinListener implements Listener{
 		}
 		
 		TablistUtils.showTab(p);
+		
+		UpdaterImpl.checkUpdate();
+		if (!UpdaterImpl.isUpdated()) {
+			if (!p.hasPermission("qessentials.updater")) {
+				return;
+			}
+			Util.sendMessage(p, "&aNew version of qEssentialsReloaded is available!");
+			Util.sendMessage(p, "&a  Newest version: &l" + UpdaterImpl.getNewestVersion());
+			Util.sendMessage(p, "&a  Current version: &l" + UpdaterImpl.getCurrentVersion());
+			Util.sendMessage(p, "&aPlease update it on &lhttp://github.com/xVacuum/qEssentialsReloaded/releases");
+			Util.sendMessage(p, "&aIt's important.");
+		}
 	}
 }

@@ -27,6 +27,8 @@ public class AsyncPlayerChatListener implements Listener {
 		}
 		
 		String format = Main.getInstance().getConfig().getString("chat-format");
+		format = StringUtils.replace(format, "{PREFIX}", Main.chat.getPlayerPrefix(p));
+		format = StringUtils.replace(format, "{SUFFIX}", Main.chat.getPlayerSuffix(p));
 		format = StringUtils.replace(format, "{PLAYER}", p.getName());
 		format = StringUtils.replace(format, "{DISPLAYNAME}", p.getDisplayName());
 		format = StringUtils.replace(format, "{HEALTH}", String.valueOf(p.getHealth()/2));
