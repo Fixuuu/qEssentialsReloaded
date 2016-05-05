@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import com.mojang.authlib.GameProfile;
 
+import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.interfaces.User;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import me.kavzaq.qEssentialsReloaded.utils.json.JSONPacketBuilder;
@@ -28,7 +29,7 @@ public class PacketPlayerInfo {
 		try {
 			return cons.newInstance(PACKET_PLAY_OUT_PLAYER_INFO_CONSTRUCTOR, 
 					gp, 
-					30, 
+					TabConfigurationImpl.tablistPing, 
 					Enum.valueOf((Class<Enum>) PacketEssential.WORLD_SETTINGS$ENUM_GAMEMODE, "SURVIVAL"), 
 					JSONPacketBuilder.build("{\"text\": \"" + Util.fixColors(slot) + "\"}"));
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException

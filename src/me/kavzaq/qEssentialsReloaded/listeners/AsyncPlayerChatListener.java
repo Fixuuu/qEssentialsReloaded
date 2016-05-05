@@ -1,5 +1,6 @@
 package me.kavzaq.qEssentialsReloaded.listeners;
 
+import org.apache.commons.lang3.StringUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -26,11 +27,11 @@ public class AsyncPlayerChatListener implements Listener {
 		}
 		
 		String format = Main.getInstance().getConfig().getString("chat-format");
-		format = format.replace("{PLAYER}", p.getName());
-		format = format.replace("{DISPLAYNAME}", p.getDisplayName());
-		format = format.replace("{HEALTH}", String.valueOf(p.getHealth()/2));
-		format = format.replace("{FOOD}", String.valueOf(p.getFoodLevel()/2));
-		format = format.replace("{MESSAGE}", e.getMessage());
+		format = StringUtils.replace(format, "{PLAYER}", p.getName());
+		format = StringUtils.replace(format, "{DISPLAYNAME}", p.getDisplayName());
+		format = StringUtils.replace(format, "{HEALTH}", String.valueOf(p.getHealth()/2));
+		format = StringUtils.replace(format, "{FOOD}", String.valueOf(p.getFoodLevel()/2));
+		format = StringUtils.replace(format, "{MESSAGE}", e.getMessage());
 		e.setFormat(Util.fixColors(format));
 		
 		int _slowdownTime = Main.getInstance().getConfig().getInt("chat-slowdown");

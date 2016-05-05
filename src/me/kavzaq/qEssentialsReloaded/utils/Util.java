@@ -19,7 +19,7 @@ import me.kavzaq.qEssentialsReloaded.interfaces.User;
 
 public class Util {
 	
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault());
+	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
 	
 	public static String fixColors(String text) {
 		return ChatColor.translateAlternateColorCodes('&', text);
@@ -52,7 +52,7 @@ public class Util {
 		return (Math.random() < chance);
 	}
 
-	public static String getParsedTime(long time) {
+	public static String formattedTime(long time) {
 	    return dateFormat.format(new Date(time));
 	}
 	
