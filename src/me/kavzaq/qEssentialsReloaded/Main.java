@@ -5,7 +5,6 @@ import java.util.Random;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -207,8 +206,7 @@ public class Main extends JavaPlugin{
 		l.info("[qEssentialsReloaded] Loading resources...");
 		l.info("[qEssentialsReloaded] Doing some miscellaneous work...");
 		l.info("[qEssentialsReloaded] [Misc] Loading FunnyGuilds optionally...");
-		Plugin fg = Bukkit.getPluginManager().getPlugin("FunnyGuilds");
-		if ((!fg.isEnabled() || (fg == null))) {
+		if (!Bukkit.getPluginManager().isPluginEnabled("FunnyGuilds")) {
 			l.info("[qEssentialsReloaded] [Misc] FunnyGuilds missing, disabling tab variables...");
 		}
 		else {
@@ -216,8 +214,7 @@ public class Main extends JavaPlugin{
 			funnyguilds_support = true;
 		}
 		l.info("[qEssentialsReloaded] [Misc] Loading Vault optionally...");
-		Plugin vault = Bukkit.getPluginManager().getPlugin("Vault");
-		if ((!vault.isEnabled() || (vault == null))) {
+		if (!Bukkit.getPluginManager().isPluginEnabled("Vault")) {
 			l.info("[qEssentialsReloaded] [Misc] Vault missing, disabling chat and economy functions...");
 		}
 		else {

@@ -121,6 +121,9 @@ public class TablistUtils {
 		string = StringUtils.replace(string, "{PLAYER}", player.getName());
 		string = StringUtils.replace(string, "{DISPLAYNAME}", player.getDisplayName());
 		string = StringUtils.replace(string, "{ONLINE}", String.valueOf(Bukkit.getOnlinePlayers().size()));
+		
+		string = StringUtils.replace(string, "{FOOD}", String.valueOf(player.getFoodLevel()));
+		string = StringUtils.replace(string, "{HEALTH}", String.valueOf(player.getHealth()));
 		// time
 		if (hour > 10) string = StringUtils.replace(string, "{HOUR}", String.valueOf(hour));
 		else string = StringUtils.replace(string, "{HOUR}", "0" + String.valueOf(hour));
