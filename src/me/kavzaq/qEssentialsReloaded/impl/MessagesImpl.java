@@ -186,6 +186,10 @@ public class MessagesImpl {
 	public static String HELPOP_COOLDOWN = "&4Blad: &cMusisz zaczekac jeszcze &7%cooldown%&c zanim napiszesz kolejna wiadomosc!";
 	public static String HELPOP_FORMAT = "&8[&4HELPOP&8] &8<&c%player%&8> &c%message%";
 	
+	// Head command
+	public static String HEAD_SUCCESS = "&7Pomyslnie otrzymales glowe gracza &c%player%&7!";
+	public static String HEAD_NAME = "&7Glowa gracza: &c%player%";
+	
 	// Commands desc
 	public static String BACK_DESC = "Teleportacja do ostatniej lokacji";
 	public static String BROADCAST_DESC = "Globalne ogloszenie";
@@ -219,4 +223,5 @@ public class MessagesImpl {
 	public static String ENCHANT_DESC = "Zaklina przedmiot w twojej glownej rece";
 	public static String INVSEE_DESC = "Otwiera ekwipunek wybranej osoby";
 	public static String HELPOP_DESC = "Wiadomosc do administratorow";
+	public static String HEAD_DESC = "Daje glowe gracza";
 }

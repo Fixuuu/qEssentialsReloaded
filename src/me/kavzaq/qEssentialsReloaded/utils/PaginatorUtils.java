@@ -70,6 +70,7 @@ public class PaginatorUtils {
 		map.put(29, MessagesImpl.HELP_INDEX.replace("%command%", "enchant").replace("%description%", MessagesImpl.ENCHANT_DESC));
 		map.put(30, MessagesImpl.HELP_INDEX.replace("%command%", "invsee").replace("%description%", MessagesImpl.INVSEE_DESC));
 		map.put(31, MessagesImpl.HELP_INDEX.replace("%command%", "helpop").replace("%description%", MessagesImpl.HELPOP_DESC));
+		map.put(32, MessagesImpl.HELP_INDEX.replace("%command%", "head").replace("%description%", MessagesImpl.HEAD_DESC));
 	}
 
 }

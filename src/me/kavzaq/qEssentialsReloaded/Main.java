@@ -12,6 +12,7 @@ import org.mcstats.Metrics;
 
 import me.kavzaq.qEssentialsReloaded.commands.CommandManager;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.NightAlias;
+import me.kavzaq.qEssentialsReloaded.commands.aliases.ReloadAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.SunAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.SunnyAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.ThunderAlias;
@@ -26,6 +27,7 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.FlyCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.GameModeCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.GiveCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.GodCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.HeadCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.HealCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.HelpCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.HelpopCommand;
@@ -282,11 +284,13 @@ public class Main extends JavaPlugin{
 		CommandManager.registerCommand(new EnchantCommand());
 		CommandManager.registerCommand(new InvseeCommand());
 		CommandManager.registerCommand(new HelpopCommand());
+		CommandManager.registerCommand(new HeadCommand());
 		//aliases
 		CommandManager.registerCommand(new SunnyAlias());
 		CommandManager.registerCommand(new ThunderAlias());
 		CommandManager.registerCommand(new SunAlias());
 		CommandManager.registerCommand(new NightAlias());
+		CommandManager.registerCommand(new ReloadAlias());
 		l.info("[qEssentialsReloaded] [Metrics] Instantiating metrics...");
 		try {
 			metrics = new Metrics(this);
