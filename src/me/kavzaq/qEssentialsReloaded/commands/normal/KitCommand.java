@@ -46,10 +46,17 @@ public class KitCommand extends CommandImpl {
 				Util.sendMessage(p, MessagesImpl.KIT_UNKNOWN);
 				return;
 			}
-			if (!KitUtils.canTake(kit, p)) {
-				Util.sendMessage(p, MessagesImpl.KIT_COOLDOWN
-						.replace("%cooldown%", KitUtils.timeRemain(kit, p)));
+			if (!p.hasPermission("qessentials.kit." + kit.getName())) {
+				Util.sendMessage(p, MessagesImpl.NO_PERMISSION
+						.replace("%permission%", "qessentials.kit." + kit.getName()));
 				return;
+			}
+			if (!p.hasPermission("qessentials.kit.bypass")) {
+				if (!KitUtils.canTake(kit, p)) {
+					Util.sendMessage(p, MessagesImpl.KIT_COOLDOWN
+							.replace("%cooldown%", KitUtils.timeRemain(kit, p)));
+					return;
+				}
 			}
 			HashMap<Integer, ItemStack> itemsNotStored = Maps.newHashMap();
 			for (String item : kit.getItems()) {

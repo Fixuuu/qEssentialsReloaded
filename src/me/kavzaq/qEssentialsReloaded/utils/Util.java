@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.IOUtils;
 import org.bukkit.Bukkit;
@@ -23,6 +24,7 @@ import me.kavzaq.qEssentialsReloaded.interfaces.User;
 public class Util {
 	
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
+	private static final StringBuilder sb = new StringBuilder();
 	
 	public static String fixColors(String text) {
 		return ChatColor.translateAlternateColorCodes('&', text);
@@ -73,6 +75,56 @@ public class Util {
 		BigDecimal bdec = new BigDecimal(d);
 		bdec = bdec.setScale(places, RoundingMode.HALF_UP);
 		return bdec.doubleValue();
+	}
+	
+	
+	/*
+	 * @AUTHOR Dzikoysk
+	 * https://github.com/dzikoysk/FunnyGuilds/blob/master/src/main/java/net/dzikoysk/funnyguilds/util/TimeUtils.java
+	 * 
+	 * Dostalem kurwicy jak to robilem sam, nadal nie umiem zarzadzac czasem w javie.
+	 */
+	public static String parseTime(long millis) {
+		if (millis == 0) return "0";
+		sb.setLength(0);
+
+		long days = TimeUnit.MILLISECONDS.toDays(millis);
+		if (days > 0) millis -= TimeUnit.DAYS.toMillis(days);
+		long hours = TimeUnit.MILLISECONDS.toHours(millis);
+		if (hours > 0) millis -= TimeUnit.HOURS.toMillis(hours);
+		long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
+		if (minutes > 0) millis -= TimeUnit.MINUTES.toMillis(minutes);
+		long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
+		if (seconds > 0) millis -= TimeUnit.SECONDS.toMillis(seconds);
+
+		if (days > 0) {
+			sb.append(days);
+			long i = days % 10;
+			if (i == 1) sb.append(" dzien ");
+			else sb.append(" dni ");
+		}
+		if (hours > 0) {
+			sb.append(hours);
+			long i = hours % 10;
+			if (i == 1) sb.append(" godzine ");
+			else if (i < 5) sb.append(" godziny ");
+			else sb.append(" godzin ");
+		}
+		if (minutes > 0) {
+			sb.append(minutes);
+			long i = minutes % 10;
+			if (i == 1) sb.append(" minute ");
+			else if (i < 5) sb.append(" minuty ");
+			else sb.append(" minut ");
+		}
+		if (seconds > 0) {
+			sb.append(seconds);
+			long i = seconds % 10;
+			if (i == 1) sb.append(" sekunde ");
+			else if (i < 5) sb.append(" sekundy ");
+			else sb.append(" sekund ");
+		}
+		return (sb.toString());
 	}
 
 }

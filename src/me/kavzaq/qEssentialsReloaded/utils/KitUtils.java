@@ -46,7 +46,7 @@ public class KitUtils {
 	}
 	
 	public static String timeRemain(Kit kit, Player p) {
-		return Long.toString(((getKitData(kit, p).getCooldown() == null ? 0 : getKitData(kit, p).getCooldown() - System.currentTimeMillis()) / 1000) + 1);
+		return Util.parseTime(((getKitData(kit, p).getCooldown() == null ? 0 : getKitData(kit, p).getCooldown() - System.currentTimeMillis())) + 1);
 	}
 
 }

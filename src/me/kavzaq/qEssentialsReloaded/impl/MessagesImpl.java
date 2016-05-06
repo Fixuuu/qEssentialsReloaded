@@ -23,7 +23,7 @@ public class MessagesImpl {
 	
 	// Listeners
 	public static String CHAT_IS_DISABLED = "&4Blad: &cCzat jest aktualnie wylaczony!";
-	public static String CHAT_SLOWDOWN = "&4Blad: &cMusisz poczekac jeszcze &7%remain%s&c aby cos napisac!";
+	public static String CHAT_SLOWDOWN = "&4Blad: &cMusisz poczekac jeszcze &7%remain%&caby cos napisac!";
 	
 	// Help command
 	public static String HELP_HEADER = "&7#--------------- &cPomoc &7[&c%page% &7/&c %pages%&7] ---------------#";
@@ -173,7 +173,7 @@ public class MessagesImpl {
 	
 	// Kit command
 	public static String KIT_SUCCESS = "&7Otrzymales zestaw o nazwie &c%name%&7!";
-	public static String KIT_COOLDOWN = "&4Blad: &cMusisz zaczekac jeszcze &7%cooldown%s&c zanim wezmiesz kolejny zestaw!";
+	public static String KIT_COOLDOWN = "&4Blad: &cMusisz zaczekac jeszcze &7%cooldown%&c zanim wezmiesz kolejny zestaw!";
 	public static String KIT_LIST = "&7Dostepne zestawy: &c";
 	public static String KIT_UNKNOWN = "&4Blad: &cTaki zestaw nie istnieje!";
 	
@@ -181,6 +181,10 @@ public class MessagesImpl {
 	public static String ENCHANT_UNKNOWN = "&4Blad: &cNie znaleziono takiego zaklecia!";
 	public static String ENCHANT_SUCCESS = "&7Pomyslnie zaklnales swoj przedmiot na &c%enchantment%:%power%&7!";
 	public static String ENCHANT_NULL_ITEM = "&4Blad: &cNie trzymasz zadnego przedmiotu w glownej rece!";
+	
+	// Helpop command
+	public static String HELPOP_COOLDOWN = "&4Blad: &cMusisz zaczekac jeszcze &7%cooldown%&c zanim napiszesz kolejna wiadomosc!";
+	public static String HELPOP_FORMAT = "&8[&4HELPOP&8] &8<&c%player%&8> &c%message%";
 	
 	// Commands desc
 	public static String BACK_DESC = "Teleportacja do ostatniej lokacji";
@@ -213,4 +217,6 @@ public class MessagesImpl {
 	public static String KIT_DESC = "Zarzadzanie zestawami";
 	public static String GIVE_DESC = "Daje przedmiot pewnej osobie";
 	public static String ENCHANT_DESC = "Zaklina przedmiot w twojej glownej rece";
+	public static String INVSEE_DESC = "Otwiera ekwipunek wybranej osoby";
+	public static String HELPOP_DESC = "Wiadomosc do administratorow";
 }

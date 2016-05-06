@@ -13,6 +13,11 @@ help-page-length: 10
 quit-format: '&c{PLAYER} left the game.'
 join-format: '&a{PLAYER} joined the game.'
 ####################################################
+##                    Helpop                      ##
+####################################################
+helpop-delay: 10
+
+####################################################
 ##                  Teleporting                   ##
 ####################################################
 # Delay after command execute. In seconds.

@@ -19,7 +19,7 @@ public class PaginatorUtils {
 				.replace("%pages%", String.valueOf(size)));
 		int i = 0, k = 0;
 		page--;
-		for (final Entry<Integer, String> e : map.entrySet()) {
+		for (Entry<Integer, String> e : map.entrySet()) {
 			k++;
 			if ((((page * pageLength) + i + 1) == k) && (k != ((page * pageLength) + pageLength + 1))) {
 				i++;
@@ -68,6 +68,8 @@ public class PaginatorUtils {
 		map.put(27, MessagesImpl.HELP_INDEX.replace("%command%", "kit").replace("%description%", MessagesImpl.KIT_DESC));
 		map.put(28, MessagesImpl.HELP_INDEX.replace("%command%", "give").replace("%description%", MessagesImpl.GIVE_DESC));
 		map.put(29, MessagesImpl.HELP_INDEX.replace("%command%", "enchant").replace("%description%", MessagesImpl.ENCHANT_DESC));
+		map.put(30, MessagesImpl.HELP_INDEX.replace("%command%", "invsee").replace("%description%", MessagesImpl.INVSEE_DESC));
+		map.put(31, MessagesImpl.HELP_INDEX.replace("%command%", "helpop").replace("%description%", MessagesImpl.HELPOP_DESC));
 	}
 
 }

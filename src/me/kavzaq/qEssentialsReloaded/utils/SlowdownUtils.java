@@ -29,7 +29,7 @@ public class SlowdownUtils {
 	}
 	
 	public static String timeRemain(Player p) {
-		return Long.toString(((lastMessageSended.get(p) == null ? 0 : lastMessageSended.get(p) - System.currentTimeMillis()) / 1000) + 1);
+		return Util.parseTime(((lastMessageSended.get(p) == null ? 0 : lastMessageSended.get(p) - System.currentTimeMillis())) + 1);
 	}
 
 }

@@ -28,7 +28,9 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.GiveCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.GodCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.HealCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.HelpCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.HelpopCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.HomeCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.InvseeCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ItemCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.KitCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ListCommand;
@@ -216,14 +218,18 @@ public class Main extends JavaPlugin{
 		}
 		l.info("[qEssentialsReloaded] [Misc] Loading Vault optionally...");
 		if (!Bukkit.getPluginManager().isPluginEnabled("Vault")) {
-			l.info("[qEssentialsReloaded] [Misc] Vault missing, disabling chat and economy functions...");
+			l.info("[qEssentialsReloaded] [Misc] Vault missing, disabling vault functions...");
 		}
 		else {
-			l.info("[qEssentialsReloaded] [Misc] Vault found, enabling chat and economy functions...");
+			l.info("[qEssentialsReloaded] [Misc] Vault found, enabling vault functions...");
 			setupChat();
 			setupEconomy();
 			economy_support = true;
 			chat_support = true;
+			if (!Bukkit.getPluginManager().isPluginEnabled("PermissionsEx")) {
+				l.info("[qEssentialsReloaded] [Misc] PermissionsEx missing, disabling vault chat functions...");
+				chat_support = false;
+			}
 		}
 		l.info("[qEssentialsReloaded] Generating config and message files...");
 		MessageFile.loadFile();
@@ -274,6 +280,8 @@ public class Main extends JavaPlugin{
 		CommandManager.registerCommand(new KitCommand());
 		CommandManager.registerCommand(new GiveCommand());
 		CommandManager.registerCommand(new EnchantCommand());
+		CommandManager.registerCommand(new InvseeCommand());
+		CommandManager.registerCommand(new HelpopCommand());
 		//aliases
 		CommandManager.registerCommand(new SunnyAlias());
 		CommandManager.registerCommand(new ThunderAlias());
