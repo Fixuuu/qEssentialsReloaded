@@ -9,13 +9,13 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.utils.SlowdownUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 import me.kavzaq.qEssentialsReloaded.utils.switches.ChatSwitch;
+import me.kavzaq.qEssentialsReloaded.utils.timed.SlowdownTimed;
 
 public class AsyncPlayerChatListener implements Listener {
 	
-	@EventHandler(priority = EventPriority.LOW)
+	@EventHandler(priority = EventPriority.LOWEST)
 	public void onAsyncPlayerChat(AsyncPlayerChatEvent e) {
 		Player p = e.getPlayer();
 		if (!ChatSwitch.getChat()) {
@@ -41,14 +41,14 @@ public class AsyncPlayerChatListener implements Listener {
 		int _slowdownTime = Main.getInstance().getConfig().getInt("chat-slowdown");
 		int _slowdownTimeMS = _slowdownTime * 1000;
 		
-		if (SlowdownUtils.isBlocked(p)) {
+		if (SlowdownTimed.isBlocked(p)) {
 			e.setCancelled(true);
-			Util.sendMessage(p, MessagesImpl.CHAT_SLOWDOWN.replace("%remain%", SlowdownUtils.timeRemain(p)));
+			Util.sendMessage(p, MessagesImpl.CHAT_SLOWDOWN.replace("%remain%", SlowdownTimed.timeRemain(p)));
 			return;
 		}
 		
 		if (p.hasPermission("qessentials.chat.slowdown.bypass")) {
-			SlowdownUtils.setLastMessage(p, System.currentTimeMillis() + _slowdownTimeMS);
+			SlowdownTimed.setLastMessage(p, System.currentTimeMillis() + _slowdownTimeMS);
 		}
 	}
 

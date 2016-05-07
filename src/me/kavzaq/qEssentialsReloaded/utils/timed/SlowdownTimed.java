@@ -1,4 +1,4 @@
-package me.kavzaq.qEssentialsReloaded.utils;
+package me.kavzaq.qEssentialsReloaded.utils.timed;
 
 import java.util.HashMap;
 
@@ -6,7 +6,9 @@ import org.bukkit.entity.Player;
 
 import com.google.common.collect.Maps;
 
-public class SlowdownUtils {
+import me.kavzaq.qEssentialsReloaded.utils.Util;
+
+public class SlowdownTimed {
 	
 	private static HashMap<Player, Long> lastMessageSended = Maps.newHashMap();
 

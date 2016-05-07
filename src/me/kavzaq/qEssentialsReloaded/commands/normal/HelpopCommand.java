@@ -9,8 +9,8 @@ import org.bukkit.entity.Player;
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
-import me.kavzaq.qEssentialsReloaded.utils.HelpopUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import me.kavzaq.qEssentialsReloaded.utils.timed.HelpopTimed;
 
 public class HelpopCommand extends CommandImpl {
 
@@ -28,12 +28,12 @@ public class HelpopCommand extends CommandImpl {
 		}
 		long _delay = Main.getInstance().getConfig().getLong("helpop-delay") * 1000;
 		if (!s.hasPermission("qessentials.helpop.bypass")) {
-			if (HelpopUtils.isBlocked(s)) {
+			if (HelpopTimed.isBlocked(s)) {
 				Util.sendMessage(s, MessagesImpl.HELPOP_COOLDOWN
-						.replace("%cooldown%", HelpopUtils.timeRemain(s)));
+						.replace("%cooldown%", HelpopTimed.timeRemain(s)));
 				return;
 			}
-			HelpopUtils.setLastHelpop(s, System.currentTimeMillis() + _delay);
+			HelpopTimed.setLastHelpop(s, System.currentTimeMillis() + _delay);
 		}
 		localsb.setLength(0);
 		for (String str : args) {

@@ -29,10 +29,20 @@ public class RepairCommand extends CommandImpl {
 		}
 		else if (args.length == 1) {
 			if (args[0].equalsIgnoreCase("all")) {
+				if (!p.hasPermission("qessentials.repair.all")) {
+					Util.sendMessage(p, MessagesImpl.NO_PERMISSION
+							.replace("%permission%", "qessentials.repair.all"));
+					return;
+				}
 				RepairUtils.repairAll(p);
 				return;
 			}
 			else if (args[0].equalsIgnoreCase("armor")) {
+				if (!p.hasPermission("qessentials.repair.armor")) {
+					Util.sendMessage(p, MessagesImpl.NO_PERMISSION
+							.replace("%permission%", "qessentials.repair.armor"));
+					return;
+				}
 				RepairUtils.repairArmor(p);
 				return;
 			}

@@ -190,6 +190,16 @@ public class MessagesImpl {
 	public static String HEAD_SUCCESS = "&7Pomyslnie otrzymales glowe gracza &c%player%&7!";
 	public static String HEAD_NAME = "&7Glowa gracza: &c%player%";
 	
+	// Kick command
+	public static String KICK_BROADCAST = "&cKick &8-> &7Gracz &c%player% &7zostal wyrzucony z serwera za &c%reason%&7!";
+	public static String KICK_DEFAULT_REASON = "&cZostales wyrzucony bez powodu!";
+	public static String KICK_FORMAT = "&cZostales wyrzucony za: %reason%";
+	public static String KICK_TEMPBAN = "&cMusisz zaczekac jeszcze &7%cooldown% &czanim wejdziesz na serwer ponownie!";
+	
+	// Hat command
+	public static String HAT_UNKNOWN = "&4Blad: &cTego przedmiotu nie mozna ustawic jako czapka!";
+	public static String HAT_SUCCESS = "&7Pomyslnie ustawiono przedmiot jako czapka!";
+	
 	// Gc command
 	public static List<String> GARBAGECOLLECTOR_INFO = Arrays.asList(
 			"&7Informacje na temat serwera:",
@@ -215,6 +225,14 @@ public class MessagesImpl {
 	public static String REPAIR_SUCCESS = "&7Pomyslnie naprawiles przedmiot w twojej glownej rece!";
 	public static String REPAIR_ALL_SUCCESS = "&7Pomyslnie naprawiles caly ekwipunek!";
 	public static String REPAIR_ARMOR_SUCCESS = "&7Pomyslnie naprawiles swoja zbroje!";
+	
+	// Displayname command
+	public static String DISPLAYNAME_SUCCESS = "&7Pomyslnie ustawiono wyswietlana nazwe na &c%displayname%";
+	public static String DISPLAYNAME_RESET = "&7Pomyslnie zresetowano wyswietlana nazwe.";
+	public static String DISPLAYNAME_OTHER_RESET_RESETED = "&7Twoja wyswietlana nazwa zostala zresetowana przez &c%player%&7!";
+	public static String DISPLAYNAME_OTHER_RESET_SUCCESS = "&7Pomyslnie zresetowano wyswietlana nazwe graczu &c%player%&7!";
+	public static String DISPLAYNAME_OTHER_SUCCESS = "&7Pomyslnie ustawiono wyswietlana nazwe gracza &c%player%&7 na &c%displayname%&7!";
+	public static String DISPLAYNAME_OTHER_CHANGED = "&7Twoja wyswietlana nazwa zostala ustawiona na &c%displayname% &7przez &c%player%&7!";
 	
 	// Commands desc
 	public static String BACK_DESC = "Teleportacja do ostatniej lokacji";
@@ -253,4 +271,7 @@ public class MessagesImpl {
 	public static String ENDERCHEST_DESC = "Zarzadzanie enderchestem";
 	public static String GARBAGECOLLECTOR_DESC = "Wyswietla informacje na temat serwera";
 	public static String REPAIR_DESC = "Zarzadzanie naprawiem ekwipunku";
+	public static String KICK_DESC = "Wyrzuca gracza z powodem";
+	public static String HAT_DESC = "Ustawia nowa czapke";
+	public static String DISPLAYNAME_DESC = "Zarzadza wyswietlana nazwa";
 }

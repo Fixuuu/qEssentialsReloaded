@@ -15,9 +15,9 @@ import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.KitImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.interfaces.Kit;
-import me.kavzaq.qEssentialsReloaded.utils.KitUtils;
 import me.kavzaq.qEssentialsReloaded.utils.ParsingUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
+import me.kavzaq.qEssentialsReloaded.utils.timed.KitTimed;
 
 public class KitCommand extends CommandImpl {
 
@@ -52,9 +52,9 @@ public class KitCommand extends CommandImpl {
 				return;
 			}
 			if (!p.hasPermission("qessentials.kit.bypass")) {
-				if (!KitUtils.canTake(kit, p)) {
+				if (!KitTimed.canTake(kit, p)) {
 					Util.sendMessage(p, MessagesImpl.KIT_COOLDOWN
-							.replace("%cooldown%", KitUtils.timeRemain(kit, p)));
+							.replace("%cooldown%", KitTimed.timeRemain(kit, p)));
 					return;
 				}
 			}
@@ -73,7 +73,7 @@ public class KitCommand extends CommandImpl {
 			{   
 			    p.getWorld().dropItemNaturally(p.getLocation(), entry.getValue());
 			}
-			KitUtils.takeKit(kit, p);
+			KitTimed.takeKit(kit, p);
 			Util.sendMessage(p, MessagesImpl.KIT_SUCCESS
 					.replace("%name%", kit.getName()));
 		}

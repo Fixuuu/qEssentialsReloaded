@@ -1,4 +1,4 @@
-package me.kavzaq.qEssentialsReloaded.utils;
+package me.kavzaq.qEssentialsReloaded.utils.timed;
 
 import java.util.HashMap;
 
@@ -6,7 +6,9 @@ import org.bukkit.command.CommandSender;
 
 import com.google.common.collect.Maps;
 
-public class HelpopUtils {
+import me.kavzaq.qEssentialsReloaded.utils.Util;
+
+public class HelpopTimed {
 	
 	private static HashMap<CommandSender, Long> lastHelpopSended = Maps.newHashMap();
 

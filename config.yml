@@ -12,6 +12,8 @@ help-page-length: 10
 # Quit/Join formats
 quit-format: '&c{PLAYER} left the game.'
 join-format: '&a{PLAYER} joined the game.'
+# Kick temporary ban in seconds
+kick-temporary-ban: 20
 ####################################################
 ##                    Helpop                      ##
 ####################################################

@@ -1,4 +1,4 @@
-package me.kavzaq.qEssentialsReloaded.utils;
+package me.kavzaq.qEssentialsReloaded.utils.timed;
 
 import org.bukkit.entity.Player;
 
@@ -6,8 +6,10 @@ import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.KitDataImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.interfaces.Kit;
+import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
+import me.kavzaq.qEssentialsReloaded.utils.Util;
 
-public class KitUtils {
+public class KitTimed {
 	
 	public static void takeKit(Kit kit, Player p) {
 		UserImpl u = Main.getUserManager().getUser(p);
