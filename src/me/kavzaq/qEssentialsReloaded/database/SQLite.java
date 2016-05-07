@@ -23,6 +23,9 @@ public class SQLite {
 	public SQLite() {
 		// setting variables
 		driver = "org.sqlite.JDBC";
+		if (!Main.getInstance().getDataFolder().exists()) {
+			Main.getInstance().getDataFolder().mkdirs();
+		}
 		if (!file.exists()) {
 			try {
 				file.createNewFile();

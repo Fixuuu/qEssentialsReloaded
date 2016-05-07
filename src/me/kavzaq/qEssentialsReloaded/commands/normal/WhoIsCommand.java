@@ -62,7 +62,7 @@ public class WhoIsCommand extends CommandImpl {
 				Util.sendMessage(s, str
 						.replace("%player%", other.getName())
 						.replace("%uuid%", other.getUniqueId().toString())
-						.replace("%addressIp%", other.getAddress().getHostName())
+						.replace("%addressIp%", String.valueOf(other.getAddress().getAddress().getHostAddress()))
 						.replace("%isGlobalAdmin%", BooleanUtils.getOperatorParsedBoolean(other))
 						.replace("%mode%", other.getGameMode().toString().toLowerCase())
 						.replace("%flying%", BooleanUtils.getParsedBooleanYesNo(other.isFlying()))

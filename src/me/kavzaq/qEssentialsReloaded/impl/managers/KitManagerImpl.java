@@ -31,6 +31,7 @@ public class KitManagerImpl implements KitManager {
 
 	@Override
 	public String getKits() {
+		localsb.setLength(0);
 		for (String kitStr : Main.getInstance().getConfig().getConfigurationSection("kits").getKeys(false)){
 			localsb.append(", " + kitStr);
 		}

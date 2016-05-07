@@ -12,8 +12,8 @@ import org.mcstats.Metrics;
 
 import me.kavzaq.qEssentialsReloaded.commands.CommandManager;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.NightAlias;
+import me.kavzaq.qEssentialsReloaded.commands.aliases.DayAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.SunAlias;
-import me.kavzaq.qEssentialsReloaded.commands.aliases.SunnyAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.ThunderAlias;
 import me.kavzaq.qEssentialsReloaded.commands.normal.BackCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.BroadcastCommand;
@@ -300,9 +300,9 @@ public class Main extends JavaPlugin{
 		CommandManager.registerCommand(new HatCommand());
 		CommandManager.registerCommand(new DisplayNameCommand());
 		//aliases
-		CommandManager.registerCommand(new SunnyAlias());
-		CommandManager.registerCommand(new ThunderAlias());
 		CommandManager.registerCommand(new SunAlias());
+		CommandManager.registerCommand(new ThunderAlias());
+		CommandManager.registerCommand(new DayAlias());
 		CommandManager.registerCommand(new NightAlias());
 		l.info("[qEssentialsReloaded] [Metrics] Instantiating metrics...");
 		try {

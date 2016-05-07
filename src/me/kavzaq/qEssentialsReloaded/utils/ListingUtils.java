@@ -29,8 +29,6 @@ public class ListingUtils {
 								", y" + _home.getLocation().getY() +
 								", z" + _home.getLocation().getZ())
 						+ "\n");
-			} else {
-				break;
 			}
 		}
 		return localsb.toString();

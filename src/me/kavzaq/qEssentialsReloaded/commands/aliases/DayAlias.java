@@ -10,22 +10,18 @@ import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
-public class SunnyAlias extends CommandImpl {
-	
-	public SunnyAlias() {
-		super("sunny", "Weather alias", "/sunny", "weather.aliases", Lists.newArrayList());
+public class DayAlias extends CommandImpl  {
+
+	public DayAlias() {
+		super("day", "Time alias", "/day", "time.aliases", Lists.newArrayList());
 		
 	}
 
 	@Override
 	public void onExecute(CommandSender s, String[] args) {
 		World world = Bukkit.getWorlds().get(0);
-		world.setWeatherDuration(999999999);
-		world.setThunderDuration(999999999);
-		world.setStorm(false);
-		world.setThundering(false);
-		Util.sendMessage(s, MessagesImpl.WEATHER_SUNNY_SUCCESS.replace("%world%", world.getName()));
+		world.setTime(2500L);
+		Util.sendMessage(s, MessagesImpl.TIME_DAY_SUCCESS.replace("%world%", world.getName()));
 	}
-
 
 }

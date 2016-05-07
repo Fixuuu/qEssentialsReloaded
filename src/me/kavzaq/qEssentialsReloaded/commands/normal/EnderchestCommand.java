@@ -28,6 +28,11 @@ public class EnderchestCommand extends CommandImpl {
 			return;
 		}
 		else if (args.length == 1) {
+			if (!p.hasPermission("qessentials.enderchest.others")) {
+				Util.sendMessage(p, MessagesImpl.NO_PERMISSION
+						.replace("%permission%", "qessentials.enderchest.others"));
+				return;
+			}
 			if (Bukkit.getPlayer(args[0]) == null) {
 				Util.sendMessage(p, MessagesImpl.OFFLINE_PLAYER);
 				return;

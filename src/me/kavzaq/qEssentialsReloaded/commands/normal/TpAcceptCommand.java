@@ -36,8 +36,8 @@ public class TpAcceptCommand extends CommandImpl {
 			Main.getTeleportRequests().removeRequest(requester, p);
 			Util.sendMessage(requester, MessagesImpl.TPACCEPT_OTHER_ACCEPTED.replace("%player%", p.getName()));
 			Util.sendMessage(p, MessagesImpl.TPACCEPT_ACCEPTED.replace("%player%", requester.getName()));
-			TeleportUtils tpu = new TeleportUtils(p);
-			tpu.teleport(requester.getLocation());
+			TeleportUtils tpu = new TeleportUtils(requester);
+			tpu.teleport(p.getLocation());
 			Util.sendMessage(requester, MessagesImpl.TELEPORT_SUCCESS);
 			return;
 		}else{

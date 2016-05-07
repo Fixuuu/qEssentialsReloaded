@@ -36,6 +36,11 @@ public class DisplayNameCommand extends CommandImpl {
 		}
 		
 		else if (args.length == 2) {
+			if (!p.hasPermission("qessentials.displayname.others")) {
+				Util.sendMessage(p, MessagesImpl.NO_PERMISSION
+						.replace("%permission%", "qessentials.displayname.others"));
+				return;
+			}
 			if (Bukkit.getPlayer(args[1]) == null) {
 				Util.sendMessage(p, MessagesImpl.OFFLINE_PLAYER);
 				return;
