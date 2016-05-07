@@ -190,6 +190,21 @@ public class MessagesImpl {
 	public static String HEAD_SUCCESS = "&7Pomyslnie otrzymales glowe gracza &c%player%&7!";
 	public static String HEAD_NAME = "&7Glowa gracza: &c%player%";
 	
+	// Gc command
+	public static List<String> GARBAGECOLLECTOR_INFO = Arrays.asList(
+			"&7Informacje na temat serwera:",
+			"  &7TPS: &c%tps% &7(&c%percentage% overload&7)",
+			"  &7Uptime: &c%uptime%",
+			"  &7Dostepne rdzenie: &c%cores%",
+			"  &7System: &c%os%",
+			"  &7Java: &c%java%",
+			"  &7Maksymalna pamiec: &c%maxMemory%",
+			"  &7Alokowana pamiec: &c%totalMemory%", 
+			"  &7Wolna pamiec: &c%freeMemory%", 
+			"  &7Swiaty:", 
+			"%worlds%");
+	public static String GARBAGECOLLECTOR_WORLD_FORMAT = "&c    %world%&7: &c%chunks% &7chunkow, &c%objects% &7obiektow, &c%tiles% &7tilesow.";
+	
 	// Commands desc
 	public static String BACK_DESC = "Teleportacja do ostatniej lokacji";
 	public static String BROADCAST_DESC = "Globalne ogloszenie";
@@ -224,4 +239,6 @@ public class MessagesImpl {
 	public static String INVSEE_DESC = "Otwiera ekwipunek wybranej osoby";
 	public static String HELPOP_DESC = "Wiadomosc do administratorow";
 	public static String HEAD_DESC = "Daje glowe gracza";
+	public static String ENDERCHEST_DESC = "Zarzadzanie enderchestem";
+	public static String GARBAGECOLLECTOR_DESC = "Wyswietla informacje na temat serwera";
 }

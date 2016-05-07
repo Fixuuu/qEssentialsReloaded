@@ -71,6 +71,8 @@ public class PaginatorUtils {
 		map.put(30, MessagesImpl.HELP_INDEX.replace("%command%", "invsee").replace("%description%", MessagesImpl.INVSEE_DESC));
 		map.put(31, MessagesImpl.HELP_INDEX.replace("%command%", "helpop").replace("%description%", MessagesImpl.HELPOP_DESC));
 		map.put(32, MessagesImpl.HELP_INDEX.replace("%command%", "head").replace("%description%", MessagesImpl.HEAD_DESC));
+		map.put(33, MessagesImpl.HELP_INDEX.replace("%command%", "enderchest").replace("%description%", MessagesImpl.ENDERCHEST_DESC));
+		map.put(34, MessagesImpl.HELP_INDEX.replace("%command%", "garbagecollector").replace("%description%", MessagesImpl.GARBAGECOLLECTOR_DESC));
 	}
 
 }

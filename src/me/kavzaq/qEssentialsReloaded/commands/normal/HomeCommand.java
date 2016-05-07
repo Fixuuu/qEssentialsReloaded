@@ -10,7 +10,7 @@ import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.HomeDataImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
-import me.kavzaq.qEssentialsReloaded.utils.HomeUtils;
+import me.kavzaq.qEssentialsReloaded.utils.ListingUtils;
 import me.kavzaq.qEssentialsReloaded.utils.SerializeUtils;
 import me.kavzaq.qEssentialsReloaded.utils.TeleportUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
@@ -32,7 +32,7 @@ public class HomeCommand extends CommandImpl {
 		
 		if (args.length == 0) {
 			Util.sendMessage(p, MessagesImpl.HOME_LIST_HEADER);
-			Util.sendMessage(p, HomeUtils.getHomeList(p));
+			Util.sendMessage(p, ListingUtils.getHomeList(p));
 			return;
 		}
 		

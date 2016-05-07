@@ -11,7 +11,7 @@ import me.kavzaq.qEssentialsReloaded.impl.CommandImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.utils.BooleanUtils;
-import me.kavzaq.qEssentialsReloaded.utils.HomeUtils;
+import me.kavzaq.qEssentialsReloaded.utils.ListingUtils;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class WhoIsCommand extends CommandImpl {
@@ -48,7 +48,7 @@ public class WhoIsCommand extends CommandImpl {
 								", y" + p.getLocation().getY() +
 								", z" + p.getLocation().getZ())
 						.replace("%isGod%", BooleanUtils.getParsedBooleanYesNo(u.isGod()))
-						.replace("%homes%", HomeUtils.getHomeList(p)));
+						.replace("%homes%", ListingUtils.getHomeList(p)));
 			}
 		}
 		else if (args.length == 1) {
@@ -73,7 +73,7 @@ public class WhoIsCommand extends CommandImpl {
 								", y" + other.getLocation().getY() +
 								", z" + other.getLocation().getZ())
 						.replace("%isGod%", BooleanUtils.getParsedBooleanYesNo(otheru.isGod()))
-						.replace("%homes%", HomeUtils.getHomeList(other)));
+						.replace("%homes%", ListingUtils.getHomeList(other)));
 				
 			}
 		}

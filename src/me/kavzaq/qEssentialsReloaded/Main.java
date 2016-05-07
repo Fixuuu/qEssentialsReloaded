@@ -22,9 +22,11 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.ChatCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ClearInventoryCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.DelHomeCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.EnchantCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.EnderchestCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.FeedCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.FlyCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.GameModeCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.GarbageCollectorCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.GiveCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.GodCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.HeadCommand;
@@ -76,6 +78,7 @@ import me.kavzaq.qEssentialsReloaded.listeners.SignChangeListener;
 import me.kavzaq.qEssentialsReloaded.runnables.AutoMessageTask;
 import me.kavzaq.qEssentialsReloaded.runnables.TablistRefreshTask;
 import me.kavzaq.qEssentialsReloaded.runnables.metrics.MetricsCollector;
+import me.kavzaq.qEssentialsReloaded.runnables.tpsmonitor.TPSMonitor;
 import me.kavzaq.qEssentialsReloaded.utils.EnchantmentUtils;
 import me.kavzaq.qEssentialsReloaded.utils.PaginatorUtils;
 import me.kavzaq.qEssentialsReloaded.utils.TablistUtils;
@@ -285,6 +288,8 @@ public class Main extends JavaPlugin{
 		CommandManager.registerCommand(new InvseeCommand());
 		CommandManager.registerCommand(new HelpopCommand());
 		CommandManager.registerCommand(new HeadCommand());
+		CommandManager.registerCommand(new EnderchestCommand());
+		CommandManager.registerCommand(new GarbageCollectorCommand());
 		//aliases
 		CommandManager.registerCommand(new SunnyAlias());
 		CommandManager.registerCommand(new ThunderAlias());
@@ -301,7 +306,9 @@ public class Main extends JavaPlugin{
 		l.info("[qEssentialsReloaded] Starting tasks...");
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new AutoMessageTask(), 0L, getConfig().getLong("automessage-delay") * 20);
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TablistRefreshTask(), 0L, TabConfigurationImpl.tablistRefreshTime * 20);
-		Bukkit.getScheduler().runTaskLaterAsynchronously(this, new MetricsCollector(), 20L);
+		Bukkit.getScheduler().runTaskLaterAsynchronously(this, new MetricsCollector(), 20);
+		
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TPSMonitor(), 100L, 1);
 		l.info("[qEssentialsReloaded] Preloading tab...");
 		Main.getTabExecutor().loadTab();
 		l.info("[qEssentialsReloaded] Configuring help paged map...");

@@ -1,5 +1,8 @@
 package me.kavzaq.qEssentialsReloaded.utils;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
+import org.bukkit.World;
 import org.bukkit.entity.Player;
 
 import com.mysql.jdbc.StringUtils;
@@ -9,7 +12,7 @@ import me.kavzaq.qEssentialsReloaded.impl.HomeDataImpl;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 
-public class HomeUtils {
+public class ListingUtils {
 	
 	private static final StringBuilder localsb = new StringBuilder();
 	
@@ -29,6 +32,24 @@ public class HomeUtils {
 			} else {
 				break;
 			}
+		}
+		return localsb.toString();
+	}
+	
+	public static String getWorldList() {
+		localsb.setLength(0);
+		for (World w : Bukkit.getWorlds()) {
+			int tiles = 0;
+			Chunk[] loadedChunks = w.getLoadedChunks();
+			for (Chunk c : loadedChunks) {
+				tiles += c.getTileEntities().length;
+			}
+			localsb.append(MessagesImpl.GARBAGECOLLECTOR_WORLD_FORMAT
+						.replace("%world%", w.getName())
+						.replace("%objects%", String.valueOf(w.getEntities().size()))
+						.replace("%chunks%", String.valueOf(loadedChunks.length))
+						.replace("%tiles%", String.valueOf(tiles))
+					+ "\n");
 		}
 		return localsb.toString();
 	}
