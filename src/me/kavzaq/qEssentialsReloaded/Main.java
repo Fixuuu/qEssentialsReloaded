@@ -39,6 +39,7 @@ import me.kavzaq.qEssentialsReloaded.commands.normal.ItemCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.KitCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ListCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.MessageCommand;
+import me.kavzaq.qEssentialsReloaded.commands.normal.RepairCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.ReplyCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.SetHomeCommand;
 import me.kavzaq.qEssentialsReloaded.commands.normal.SetSpawnCommand;
@@ -290,6 +291,7 @@ public class Main extends JavaPlugin{
 		CommandManager.registerCommand(new HeadCommand());
 		CommandManager.registerCommand(new EnderchestCommand());
 		CommandManager.registerCommand(new GarbageCollectorCommand());
+		CommandManager.registerCommand(new RepairCommand());
 		//aliases
 		CommandManager.registerCommand(new SunnyAlias());
 		CommandManager.registerCommand(new ThunderAlias());

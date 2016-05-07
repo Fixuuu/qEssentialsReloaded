@@ -31,7 +31,7 @@ CLEAR_OTHER_SUCCESS: '&7Wyczyszczono ekwipunek graczowi &c%player%&7!'
 ITEM_SUCCESS: '&7Otrzymales: &c%amount% x %item%'
 ITEM_UNKNOWN: '&4Blad: &cSyntax twojego przedmiotu jest nieprawidlowy! Sprawdz czy
   syntax jest zgodny, lub popraw bledy!'
-ITEM_OTHER_GIVE: '&7Otrzymales: &c%amount% x %item% &7od %c%player%&7!'
+ITEM_OTHER_GIVE: '&7Otrzymales: &c%amount% x %item% &7od &c%player%&7!'
 ITEM_OTHER_SUCCESS: '&7Pomyslnie dales graczowi &c%player%&7 przedmiot &c%item% &7w
   ilosci &c%amount%&7!'
 TELEPORT_PROCESS: '&7Teleport nastapi za &c%delay% &7sekund...'
@@ -149,6 +149,10 @@ GARBAGECOLLECTOR_INFO:
 - '%worlds%'
 GARBAGECOLLECTOR_WORLD_FORMAT: '&c    %world%&7 -> &c%chunks% &7chunkow, &c%objects%
   &7obiektow, &c%tiles% &7tilesow.'
+REPAIR_UNKNOWN: '&4Blad: &cPrzedmiotu ktory trzymasz w glownej rece nie da sie naprawic!'
+REPAIR_SUCCESS: '&7Pomyslnie naprawiles przedmiot w twojej glownej rece!'
+REPAIR_ALL_SUCCESS: '&7Pomyslnie naprawiles caly ekwipunek!'
+REPAIR_ARMOR_SUCCESS: '&7Pomyslnie naprawiles swoja zbroje!'
 BACK_DESC: Teleportacja do ostatniej lokacji
 BROADCAST_DESC: Globalne ogloszenie
 CHAT_DESC: Zarzadzanie czatem
@@ -184,3 +188,4 @@ HELPOP_DESC: Wiadomosc do administratorow
 HEAD_DESC: Daje glowe gracza
 ENDERCHEST_DESC: Zarzadzanie enderchestem
 GARBAGECOLLECTOR_DESC: Wyswietla informacje na temat serwera
+REPAIR_DESC: Zarzadzanie naprawiem ekwipunku

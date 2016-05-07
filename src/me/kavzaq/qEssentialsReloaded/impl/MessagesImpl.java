@@ -52,7 +52,7 @@ public class MessagesImpl {
 	// Item command
 	public static String ITEM_SUCCESS = "&7Otrzymales: &c%amount% x %item%";
 	public static String ITEM_UNKNOWN = "&4Blad: &cSyntax twojego przedmiotu jest nieprawidlowy! Sprawdz czy syntax jest zgodny, lub popraw bledy!";
-	public static String ITEM_OTHER_GIVE = "&7Otrzymales: &c%amount% x %item% &7od %c%player%&7!";
+	public static String ITEM_OTHER_GIVE = "&7Otrzymales: &c%amount% x %item% &7od &c%player%&7!";
 	public static String ITEM_OTHER_SUCCESS = "&7Pomyslnie dales graczowi &c%player%&7 przedmiot &c%item% &7w ilosci &c%amount%&7!";
 	
 	// Teleporting
@@ -210,6 +210,12 @@ public class MessagesImpl {
 			"%worlds%");
 	public static String GARBAGECOLLECTOR_WORLD_FORMAT = "&c    %world%&7 -> &c%chunks% &7chunkow, &c%objects% &7obiektow, &c%tiles% &7tilesow.";
 	
+	// Repair command
+	public static String REPAIR_UNKNOWN = "&4Blad: &cPrzedmiotu ktory trzymasz w glownej rece nie da sie naprawic!";
+	public static String REPAIR_SUCCESS = "&7Pomyslnie naprawiles przedmiot w twojej glownej rece!";
+	public static String REPAIR_ALL_SUCCESS = "&7Pomyslnie naprawiles caly ekwipunek!";
+	public static String REPAIR_ARMOR_SUCCESS = "&7Pomyslnie naprawiles swoja zbroje!";
+	
 	// Commands desc
 	public static String BACK_DESC = "Teleportacja do ostatniej lokacji";
 	public static String BROADCAST_DESC = "Globalne ogloszenie";
@@ -246,4 +252,5 @@ public class MessagesImpl {
 	public static String HEAD_DESC = "Daje glowe gracza";
 	public static String ENDERCHEST_DESC = "Zarzadzanie enderchestem";
 	public static String GARBAGECOLLECTOR_DESC = "Wyswietla informacje na temat serwera";
+	public static String REPAIR_DESC = "Zarzadzanie naprawiem ekwipunku";
 }
