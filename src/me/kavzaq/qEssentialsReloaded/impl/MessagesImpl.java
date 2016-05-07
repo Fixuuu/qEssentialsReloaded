@@ -193,7 +193,12 @@ public class MessagesImpl {
 	// Gc command
 	public static List<String> GARBAGECOLLECTOR_INFO = Arrays.asList(
 			"&7Informacje na temat serwera:",
-			"  &7TPS: &c%tps% &7(&c%percentage% overload&7)",
+			"  &7Wydajnosc: ",
+			"     &7Aktualny TPS: &c%tps% &7(&c%percentage% overload&7)",
+			"     &7Srednie TPS: ",
+			"        &7ostatnia 1 minuta: &c%1mAvgTPS% &7(&c%1mAvgPercentage% overload&7)",
+			"        &7ostatnie 5 minut: &c%5mAvgTPS% &7(&c%5mAvgPercentage% overload&7)", 
+			"        &7ostatnie 15 minut: &c%15mAvgTPS% &7(&c%15mAvgPercentage% overload&7)",
 			"  &7Uptime: &c%uptime%",
 			"  &7Dostepne rdzenie: &c%cores%",
 			"  &7System: &c%os%",
@@ -203,7 +208,7 @@ public class MessagesImpl {
 			"  &7Wolna pamiec: &c%freeMemory%", 
 			"  &7Swiaty:", 
 			"%worlds%");
-	public static String GARBAGECOLLECTOR_WORLD_FORMAT = "&c    %world%&7: &c%chunks% &7chunkow, &c%objects% &7obiektow, &c%tiles% &7tilesow.";
+	public static String GARBAGECOLLECTOR_WORLD_FORMAT = "&c    %world%&7 -> &c%chunks% &7chunkow, &c%objects% &7obiektow, &c%tiles% &7tilesow.";
 	
 	// Commands desc
 	public static String BACK_DESC = "Teleportacja do ostatniej lokacji";
