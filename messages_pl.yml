@@ -1,0 +1,186 @@
+LANGUAGE: pl
+TRANSLATION_AUTHOR: AdamGrzegorz aka KaVzaQ/KHaliT
+NO_PERMISSION: '&4Blad: &cNie masz uprawnien do tej komendy! &7(%permission%)'
+ONLY_PLAYER: '&rNie mozesz wykonac tej komendy jako konsola!'
+BAD_ARGS: '&4Blad: &cPoprawne uzycie: '
+OFFLINE_PLAYER: '&4Blad: &cWyglada na to, ze wybrany gracz jest offline!'
+OFFLINE_PLAYERS: '&4Blad: &cWyglada na to, ze ktorys z wybranych graczy jest offline!'
+BOOLEAN_ON: wlaczony
+BOOLEAN_OFF: wylaczony
+BOOLEAN_YES: tak
+BOOLEAN_NO: nie
+SAME_PERSON: '&4Blad: &cNie mozesz wykonac tej operacji na sobie!'
+SAME_PERSONS: '&4Blad: &cNie mozna wykonac tej operacji na tych samych osobach!'
+MUST_BE_INT: '&4Blad: &cJednostka czasu musi byc liczba!'
+CHAT_IS_DISABLED: '&4Blad: &cCzat jest aktualnie wylaczony!'
+CHAT_SLOWDOWN: '&4Blad: &cMusisz poczekac jeszcze &7%remain%&caby cos napisac!'
+HELP_HEADER: '&7#--------------- &cPomoc &7[&c%page% &7/&c %pages%&7] ---------------#'
+HELP_INDEX: '&c/%command% &8- &7%description%'
+HELP_UNKNOWN_PAGE: '&4Blad: &cNie znaleziono takiej strony!'
+GAMEMODE_UNKNOWN: '&4Blad: &cNie znaleziono takiego trybu!'
+GAMEMODE_SUCCESS: '&7Pomyslnie zmieniono tryb gry na: &c%mode%&7!'
+GAMEMODE_OTHER_CHANGED: '&7Gracz &c%player%&7 wlasnie zmienil twoj tryb gry na &c%mode%&7!'
+GAMEMODE_OTHER_SUCCESS: '&7Pomyslnie zmieniono tryb gry na &c%mode%&7 dla gracza &c%player%&7!'
+BROADCAST_STYLE: '&8[&cqEssentials&8] &7%message% &8[&cReloaded&8]'
+HEAL_SUCCESS: '&7Uleczono!'
+HEAL_OTHER_HEALED: '&7Zostales uleczony przez &c%player%&7!'
+HEAL_OTHER_SUCCESS: '&7Uleczono gracza &c%player%&7!'
+CLEAR_SUCCESS: '&7Wyczyszczono!'
+CLEAR_OTHER_CLEARED: '&7Twoj ekwipunek zostal wyczyszczony przez &c%player%&7!'
+CLEAR_OTHER_SUCCESS: '&7Wyczyszczono ekwipunek graczowi &c%player%&7!'
+ITEM_SUCCESS: '&7Otrzymales: &c%amount% x %item%'
+ITEM_UNKNOWN: '&4Blad: &cSyntax twojego przedmiotu jest nieprawidlowy! Sprawdz czy
+  syntax jest zgodny, lub popraw bledy!'
+ITEM_OTHER_GIVE: '&7Otrzymales: &c%amount% x %item% &7od %c%player%&7!'
+ITEM_OTHER_SUCCESS: '&7Pomyslnie dales graczowi &c%player%&7 przedmiot &c%item% &7w
+  ilosci &c%amount%&7!'
+TELEPORT_PROCESS: '&7Teleport nastapi za &c%delay% &7sekund...'
+TELEPORT_SUCCESS: '&7Pomyslnie przeteleportowano!'
+TELEPORT_DENY: '&cZe wzgledu na ruch, teleport jest anulowany.'
+TELEPORT_SAME_PERSON: '&4Blad: &cNie mozesz wykonac operacji teleportu na sobie!'
+TPA_REQUEST_SENDED: '&7Pomyslnie wyslano prosbe o teleportacje do gracza &c%player%&7!'
+TPA_REQUEST_GOT:
+- '&7Gracz &c%player% &7chce sie do ciebie przeteleportowac!'
+- '&7Wpisz &c/tpaccept &7aby zaakceptowac teleport.'
+- '&7Wpisz &c/tpdeny &7aby odrzucic teleport.'
+- '&7Pozostalo ci &c60 sekund &7aby potwierdzic teleport!'
+TPACCEPT_ACCEPTED: '&7Pomyslnie akceptowales prosbe o teleportacje gracza &c%player%&7!'
+TPACCEPT_OTHER_ACCEPTED: '&7Twoja prosba o teleportacja zostala przyjeta przez gracza
+  &c%player%&7!'
+TELEPORT_NO_REQUEST: '&4Blad: &cNie masz aktualnie oczekujacej prosby o teleportacje!'
+TPDENY_DENIED: '&7Pomyslnie odmowiles na prosbe o teleportacje gracza &c%player%&7!'
+TPDENY_OTHER_DENIED: '&7Twoja prosba o teleportacje zostala odrzucona przez gracza
+  &c%player%&7!'
+TPA_ALREADY_REQUESTED: '&4Blad: &cJuz wyslales zaproszenie do tej osoby!'
+TPA_HAS_REQUEST_PENDING: '&4Blad: &cWyglada na to, ze osoba do ktorej chcesz wyslac
+  zaproszenie, juz jedno ma w kolejce! Odczekaj chwile!'
+TP_ALL_SUCCESS: '&7Przeteleportowano do ciebie wszystkich na serwerze'
+TP_FROM_TO_SUCCESS: '&7Przeteleportowano gracza &c%player_from%&7 do gracza &c%player_to%'
+TP_TELEPORTED: '&7Zostales przeteleportowanny do gracza &c%player%&7!'
+BACK_SUCCESS: '&7Zostales przeteleportowany do twojego ostatniego polozenia.'
+BACK_OTHER: '&7Zostales przeteleportowany do ostatniego polozenia gracza &c%player%&7!'
+FEED_SUCCESS: '&7Najedzono!'
+FEED_OTHER_FEEDED: '&7Zostales najedzony przez &c%player%&7!'
+FEED_OTHER_SUCCESS: '&7Najedzono gracza &c%player%&7!'
+FLY_SWITCHED: '&7Pomyslnie ustawiono tryb latania na &c%mode%'
+FLY_OTHER_SWITCHED: '&7Gracz &c%player%&7 zmienil ci tryb latania na &c%mode%'
+FLY_OTHER_SUCCESS: '&7Pomyslnie zmieniles graczowi &c%player%&7 tryb latania na &c%mode%'
+GOD_SWITCHED: '&7Pomyslnie ustawiono tryb &cniesmiertelnosci&7 na &c%mode%'
+GOD_OTHER_ACTIVATED: '&7Gracz &c%player%&7 zmienil ci tryb &cniesmiertelnosci&7 na
+  &c%mode%'
+GOD_OTHER_SUCCESS: '&7Pomyslnie zmieniles graczowi &c%player%&7 tryb &cniesmiertelnosci&7
+  na &c%mode%'
+SETSPAWN_SUCCESS: '&7Pomyslnie ustawiono spawn! &7Swiat: &c%world%, &7Koordynaty:
+  &c%coords%'
+SPAWN_OTHER_SUCCESS: '&7Przeteleportowano gracza &c%player%&7 na spawn!'
+SPAWN_OTHER_TELEPORTED: '&7Zostales przeteleportowany na spawn przez gracza &c%player%&7!'
+CHAT_DISABLED: '&cCzat zostal wylaczony przez &7%player%&c!'
+CHAT_ENABLED: '&aCzat zostal wlaczony przez &7%player%&a!'
+CHAT_CLEARED: '&eCzat zostal wyczyszczony przez &7%player%&e!'
+CHANGENAME_BAD_ITEM: '&4Blad: &cNie mozesz zmienic nazwy powietrza!'
+CHANGENAME_SUCCESS: '&7Pomyslnie zmieniles nazwe przedmiotu na &c%name%&7!'
+WEATHER_SUNNY_SUCCESS: '&7Pomyslnie ustawiono pogode na &csloneczna&7! (&c%world%&7)'
+WEATHER_THUNDER_SUCCESS: '&7Pomyslnie ustawiono pogode na &cdeszczowa&7! (&c%world%&7)'
+TIME_DAY_SUCCESS: '&7Pomyslnie ustawiono &cdzien [2500]&7! (&c%world%&7)'
+TIME_NIGHT_SUCCESS: '&7Pomyslnie ustawiono &cnoc [14500]&7! (&c%world%&7)'
+TIME_OWN_SUCCESS: '&7Pomyslnie ustawiono czas na &c%time%&7! (&c%world%&7)'
+LIST_HEADER: '&7Na serwerze jest &c%players%&7 na maksimum &c%maxplayers%&7 graczy
+  online!'
+LIST_INDEX: '&7Gracze: &c%players%'
+WORLD_LIST_HEADER:
+- '&7Wpisz &c/world <world>&7 aby wybrac swiat.'
+- '&7Wszystkie dostepne swiaty:'
+WORLD_INDEX: '&7  * &c%world%'
+WORLD_NOT_EXISTS: '&4Blad: &cWybrany swiat nie istnieje!'
+WHOIS_INFO:
+- '&7Informacje na temat gracza &c%player%&7:'
+- '&7  UUID: &c%uuid%'
+- '&7  Adres IP: &c%addressIp%'
+- '&7  Globalne upraw.: &c%isGlobalAdmin%'
+- '&7  Tryb gry: &c%mode%'
+- '&7  Lata: &c%flying%'
+- '&7  Zywnosc: &c%food%/10'
+- '&7  Zycie: &c%health%/10'
+- '&7  Lokacja: &c%location%'
+- '&7  Niesmiertelnosc: &c%isGod%'
+- '&7  Domy:'
+- '%homes%'
+WHOIS_HOMES_INDEX: '&7  * &c%home% &7: &c%location%'
+SETHOME_MAX: '&4Blad: &cOsiagnieto maksymalna ilosc domow!'
+SETHOME_HAS_THIS_NAME: '&4Blad: &cJuz masz dom o tej nazwie!'
+SETHOME_SUCCESS: '&7Pomyslnie dodales nowy dom o nazwie &c%home%&7!'
+HOME_UNKNOWN: '&4Blad: &cNie znaleziono domu o takiej nazwie!'
+HOME_LIST_HEADER: '&7Lista twoich domow: '
+HOME_SUCCESS: '&7Przeteleportowano do domu o nazwie &c%home%&7!'
+DELHOME_UNKNOWN: '&4Blad: &cNie znaleziono domu o takiej nazwie!'
+DELHOME_SUCCESS: '&7Pomyslnie usunales dom o nazwie &c%home%&7!'
+MESSAGE_TO_FORMAT: '&7[&cJa&7 -> &c%player%&7] &c%message%'
+MESSAGE_FROM_FORMAT: '&7[&c%player% &7-> &cJa&7] &c%message%'
+REPLY_OFFLINE_OR_NO_CONV: '&4Blad: &cGracz jest offline lub nie masz ostatniej konwersacji!'
+KIT_SUCCESS: '&7Otrzymales zestaw o nazwie &c%name%&7!'
+KIT_COOLDOWN: '&4Blad: &cMusisz zaczekac jeszcze &7%cooldown%&c zanim wezmiesz kolejny
+  zestaw!'
+KIT_LIST: '&7Dostepne zestawy: &c'
+KIT_UNKNOWN: '&4Blad: &cTaki zestaw nie istnieje!'
+ENCHANT_UNKNOWN: '&4Blad: &cNie znaleziono takiego zaklecia!'
+ENCHANT_SUCCESS: '&7Pomyslnie zaklnales swoj przedmiot na &c%enchantment%:%power%&7!'
+ENCHANT_NULL_ITEM: '&4Blad: &cNie trzymasz zadnego przedmiotu w glownej rece!'
+HELPOP_COOLDOWN: '&4Blad: &cMusisz zaczekac jeszcze &7%cooldown%&c zanim napiszesz
+  kolejna wiadomosc!'
+HELPOP_FORMAT: '&8[&4HELPOP&8] &8<&c%player%&8> &c%message%'
+HEAD_SUCCESS: '&7Pomyslnie otrzymales glowe gracza &c%player%&7!'
+HEAD_NAME: '&7Glowa gracza: &c%player%'
+GARBAGECOLLECTOR_INFO:
+- '&7Informacje na temat serwera:'
+- '  &7Wydajnosc: '
+- '     &7Aktualny TPS: &c%tps% &7(&c%percentage% overload&7)'
+- '     &7Srednie TPS: '
+- '        &7ostatnia 1 minuta: &c%1mAvgTPS% &7(&c%1mAvgPercentage% overload&7)'
+- '        &7ostatnie 5 minut: &c%5mAvgTPS% &7(&c%5mAvgPercentage% overload&7)'
+- '        &7ostatnie 15 minut: &c%15mAvgTPS% &7(&c%15mAvgPercentage% overload&7)'
+- '  &7Uptime: &c%uptime%'
+- '  &7Dostepne rdzenie: &c%cores%'
+- '  &7System: &c%os%'
+- '  &7Java: &c%java%'
+- '  &7Maksymalna pamiec: &c%maxMemory%'
+- '  &7Alokowana pamiec: &c%totalMemory%'
+- '  &7Wolna pamiec: &c%freeMemory%'
+- '  &7Swiaty:'
+- '%worlds%'
+GARBAGECOLLECTOR_WORLD_FORMAT: '&c    %world%&7 -> &c%chunks% &7chunkow, &c%objects%
+  &7obiektow, &c%tiles% &7tilesow.'
+BACK_DESC: Teleportacja do ostatniej lokacji
+BROADCAST_DESC: Globalne ogloszenie
+CHAT_DESC: Zarzadzanie czatem
+CLEARINV_DESC: Czyszczenie ekwipunku
+DELHOME_DESC: Usuniecie istniejacego domu
+FEED_DESC: Nakarmienie siebie lub kogos innego
+FLY_DESC: Przelacza tryb latania
+GAMEMODE_DESC: Zarzadzanie trybem gry
+GOD_DESC: Przelacza tryb niesmiertelnosci
+HEAL_DESC: Uleczenie siebie lub kogos innego
+HELP_DESC: Zbior dostepnych komend
+HOME_DESC: Teleportacja do istniejacego domu
+ITEM_DESC: Pobieranie dowolnej ilosci przedmiotu
+LIST_DESC: Wyswietla liste graczy online
+MESSAGE_DESC: Prywatne wiadomosci miedzy graczami
+REPLY_DESC: Odpowiada na wiadomosc gracza
+SETHOME_DESC: Dodaje nowy dom
+SETSPAWN_DESC: Ustawia pozycje spawnu
+SPAWN_DESC: Teleportuje na spawn
+TIME_DESC: Manipulacja czasem
+TP_ACC_DESC: Akceptuje prosbe o teleportacje
+TPA_DESC: Wysyla zaproszenie do teleportacji
+TP_DESC: Zarzadzanie teleportem
+TP_DENY_DESC: Odrzuca prosbe o teleportacje
+WEATHER_DESC: Manipulacja pogoda
+WHOIS_DESC: Informacje na temat gracza
+WORLD_DESC: Teleportacja miedzy swiatami
+KIT_DESC: Zarzadzanie zestawami
+GIVE_DESC: Daje przedmiot pewnej osobie
+ENCHANT_DESC: Zaklina przedmiot w twojej glownej rece
+INVSEE_DESC: Otwiera ekwipunek wybranej osoby
+HELPOP_DESC: Wiadomosc do administratorow
+HEAD_DESC: Daje glowe gracza
+ENDERCHEST_DESC: Zarzadzanie enderchestem
+GARBAGECOLLECTOR_DESC: Wyswietla informacje na temat serwera
