@@ -11,6 +11,7 @@ import org.bukkit.Bukkit;
 
 public class ReflectionUtils {
 	
+	private ReflectionUtils() { }
 	private static String _versionString;
  
 	public static Class<?> getCraftClass(String ClassName) {

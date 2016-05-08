@@ -12,6 +12,8 @@ import com.google.common.collect.Lists;
 
 public class ParsingUtils {
 	
+	private ParsingUtils() { }
+	
 	public static ItemStack getParsedItem(String syntax) {
 		String[] args = syntax.split(" ");
 		// item:data amount name lore1;lore2 enchantment:1;enchantment:2

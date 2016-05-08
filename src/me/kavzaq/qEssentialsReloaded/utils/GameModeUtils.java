@@ -5,6 +5,7 @@ import org.bukkit.GameMode;
 
 public class GameModeUtils {
 	
+	private GameModeUtils() { }
 	public static GameMode getGameMode(String name) {
 		for (GameMode mode : GameMode.values()) {
 			if (mode.name().toLowerCase().contains(name.toLowerCase())) {

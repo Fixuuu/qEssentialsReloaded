@@ -1,6 +1,7 @@
 package me.kavzaq.qEssentialsReloaded.impl.managers;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -62,11 +63,19 @@ public class UserManagerImpl implements UserManager {
 		user.setHomes(Lists.newArrayList());
 		user.setKits(Lists.newArrayList());
 		
-		String query = String.format("INSERT INTO `users` (`id`, `name`, `uuid`, `homes`, `kits`)"
-				+ " VALUES (NULL, '%s', '%s', '%s', '%s')", 
-				user.getName(), user.getUUID().toString(), SerializeUtils.serializeList(user.getHomes()),
-				SerializeUtils.serializeList(user.getKits()));
-		SQLite.executeUpdate(query);
+		PreparedStatement stat = null;
+		try {
+			stat = SQLite.createConnection().prepareStatement(
+					"INSERT INTO `users` (`id`, `name`, `uuid`, `homes`, `kits`) VALUES (NULL, '?', '?', '?', '?')");
+			stat.setString(1, user.getName());
+			stat.setString(2, user.getUUID().toString());
+			stat.setString(3, SerializeUtils.serializeList(user.getHomes()));
+			stat.setString(4, SerializeUtils.serializeList(user.getKits()));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		SQLite.executeUpdate(stat);
 		users.add(user);
 		return user;
 	}

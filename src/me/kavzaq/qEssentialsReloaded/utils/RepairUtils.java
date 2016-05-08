@@ -8,6 +8,7 @@ import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 
 public class RepairUtils {
 	
+	private RepairUtils() { }
 	private static final Material[] repairable = { 
 			Material.DIAMOND_PICKAXE, Material.DIAMOND_SWORD, Material.DIAMOND_SPADE, Material.DIAMOND_AXE, Material.DIAMOND_HOE, 
 			Material.DIAMOND_HELMET, Material.DIAMOND_CHESTPLATE, Material.DIAMOND_LEGGINGS, Material.DIAMOND_BOOTS, Material.IRON_PICKAXE, 

@@ -15,6 +15,7 @@ import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 public class ListingUtils {
 	
 	private static final StringBuilder localsb = new StringBuilder();
+	private ListingUtils() { }
 	
 	public static String getHomeList(Player player) {
 		localsb.setLength(0);

@@ -14,6 +14,7 @@ import me.kavzaq.qEssentialsReloaded.impl.KitDataImpl;
 public class SerializeUtils {
 	
 	private static StringBuilder strb = new StringBuilder();
+	private SerializeUtils() { }
 	
 	//Kits
 	public static String serializeKit(KitDataImpl kitData) {

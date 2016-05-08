@@ -5,6 +5,8 @@ import org.bukkit.entity.Player;
 import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 
 public class BooleanUtils {
+	
+	private BooleanUtils() { }
 
 	public static String getParsedBoolean(boolean bool) {
 		return bool ? 

@@ -9,6 +9,7 @@ import me.kavzaq.qEssentialsReloaded.impl.MessagesImpl;
 
 public class PaginatorUtils {
 	
+	private PaginatorUtils() { }
 	public static SortedMap<Integer, String> map = new TreeMap<Integer, String>();
 	
 	// z bukkit forums, bo jestem slaby w paginowaniu ;d

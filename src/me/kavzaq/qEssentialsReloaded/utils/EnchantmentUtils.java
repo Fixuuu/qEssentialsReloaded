@@ -8,6 +8,7 @@ import com.google.common.collect.Maps;
 
 public class EnchantmentUtils {
 	
+	private EnchantmentUtils() { }
 	public static HashMap<String, Enchantment> enchants = Maps.newHashMap();
 	
 	public static void configureEnchantments() {

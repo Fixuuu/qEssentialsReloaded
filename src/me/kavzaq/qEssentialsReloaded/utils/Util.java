@@ -25,6 +25,7 @@ public class Util {
 	
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());
 	private static final StringBuilder sb = new StringBuilder();
+	private Util() { }
 	
 	public static String fixColors(String text) {
 		return ChatColor.translateAlternateColorCodes('&', text);

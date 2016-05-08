@@ -24,6 +24,7 @@ import net.dzikoysk.funnyguilds.util.runnable.Ticking;
 public class TablistUtils {
 	
 	private static List<String> strings;
+	private TablistUtils() { }
 	
 	public static void configureMessages() {
 		strings = Lists.newArrayList();

@@ -4,18 +4,14 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import org.bukkit.Bukkit;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 
 public class SQLite {
-	
-	// ##### NO SHITSTORM PLS #####
-	// pierwszy raz uzywam sqlite, kompletnie nie wiem jak sie do tego zabrac
-	// by bylo wydajne, wskazowki mile widziane 
 
 	private File file = new File(Main.getInstance().getDataFolder(), "sqlite.db");
 	
@@ -44,18 +40,21 @@ public class SQLite {
 			cnfe.printStackTrace();
 		}
 		
-		createTables();
+		try {
+			createTables();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public static void executeUpdate(String query) {
+	public static void executeUpdate(PreparedStatement stat) {
 		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
 
 			@Override
 			public void run() {
 				try {
 					Connection conn = createConnection();
-					Statement stat = conn.createStatement();
-					stat.executeUpdate(query);
+					stat.executeUpdate();
 					stat.close();
 					conn.close();
 				} catch (SQLException e) {
@@ -77,7 +76,7 @@ public class SQLite {
 		return conn;
 	}
 	
-	private static void createTables() {
+	private static void createTables() throws SQLException {
 		String queryUsers = 
 				"CREATE TABLE IF NOT EXISTS users ("
 				+ "id INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -85,8 +84,9 @@ public class SQLite {
 				+ "uuid VARCHAR(36) NOT NULL, "
 				+ "homes VARCHAR(320),"
 				+ "kits VARCHAR(320))";
-			
-		executeUpdate(queryUsers);
+		
+		PreparedStatement stat = createConnection().prepareStatement(queryUsers);			
+		executeUpdate(stat);
 	}
 
 }

@@ -13,6 +13,8 @@ import me.kavzaq.qEssentialsReloaded.utils.reflections.ReflectionUtils;
 
 public class PacketPlayerInfo {
 	
+	private PacketPlayerInfo() { }
+	
 	private static Object PACKET_PLAY_OUT_PLAYER_INFO_CONSTRUCTOR = 
 			ReflectionUtils.getConstructor(PacketEssential.PACKET_PLAY_OUT_PLAYER_INFO);
 	

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.logging.Logger;
 
-import org.apache.commons.lang.UnhandledException;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -12,8 +11,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.mcstats.Metrics;
 
 import me.kavzaq.qEssentialsReloaded.commands.CommandManager;
-import me.kavzaq.qEssentialsReloaded.commands.aliases.NightAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.DayAlias;
+import me.kavzaq.qEssentialsReloaded.commands.aliases.NightAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.SunAlias;
 import me.kavzaq.qEssentialsReloaded.commands.aliases.ThunderAlias;
 import me.kavzaq.qEssentialsReloaded.commands.normal.BackCommand;
@@ -73,10 +72,10 @@ import me.kavzaq.qEssentialsReloaded.io.Messages;
 import me.kavzaq.qEssentialsReloaded.io.Tablist;
 import me.kavzaq.qEssentialsReloaded.io.TablistFile;
 import me.kavzaq.qEssentialsReloaded.listeners.AsyncPlayerChatListener;
+import me.kavzaq.qEssentialsReloaded.listeners.AsyncPlayerPreLoginListener;
 import me.kavzaq.qEssentialsReloaded.listeners.EntityDamageListener;
 import me.kavzaq.qEssentialsReloaded.listeners.FoodLevelChangeListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerJoinListener;
-import me.kavzaq.qEssentialsReloaded.listeners.AsyncPlayerPreLoginListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerMoveListener;
 import me.kavzaq.qEssentialsReloaded.listeners.PlayerQuitListener;
 import me.kavzaq.qEssentialsReloaded.listeners.SignChangeListener;
@@ -316,30 +315,26 @@ public class Main extends JavaPlugin{
 		} catch (IOException e) {
 			l.info("[qEssentialsReloaded] [Metrics] Failed to instantiate the metrics!");
 		}
+		l.info("[qEssentialsReloaded] Configuring tablist messages...");
+		TablistUtils.configureMessages();
+		l.info("[qEssentialsReloaded] Preloading tab...");
+		Main.getTabExecutor().loadTab();
 		l.info("[qEssentialsReloaded] Starting tasks...");
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new AutoMessageTask(), 0L, getConfig().getLong("automessage-delay") * 20);
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TablistRefreshTask(), 0L, TabConfigurationImpl.tablistRefreshTime * 20);
 		Bukkit.getScheduler().runTaskLaterAsynchronously(this, new MetricsCollector(), 20);
 		
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TPSMonitor(), 100L, 1);
-		l.info("[qEssentialsReloaded] Preloading tab...");
-		new TabExecutorImpl().loadTab();
 		l.info("[qEssentialsReloaded] Configuring help paged map...");
 		PaginatorUtils.configureHelp();
 		l.info("[qEssentialsReloaded] Configuring enchantment aliases...");
 		EnchantmentUtils.configureEnchantments();
-		l.info("[qEssentialsReloaded] Configuring tablist messages...");
-		TablistUtils.configureMessages();
 		l.info("[qEssentialsReloaded] Loading kits...");
-		new KitManagerImpl().load();
+		Main.getKitManager().load();
 		loadTime = System.currentTimeMillis() - startTime;
 		l.info("[qEssentialsReloaded] Completed successfuly! (" + (loadTime) + "ms)");
 
-		try {
-			UpdaterImpl.checkUpdate();
-		} catch (UnhandledException e) {
-			UpdaterImpl.checkUpdate();
-		}
+		UpdaterImpl.checkUpdate();
 		if (!UpdaterImpl.isUpdated()) {
 			l.info("[qEssentialsReloaded] [Updater] New version is available!");
 			l.info("[qEssentialsReloaded] [Updater]   Newest version: " + UpdaterImpl.getNewestVersion());
