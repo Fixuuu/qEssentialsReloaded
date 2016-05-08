@@ -13,7 +13,7 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 public class Tablist {
 	
 	public static void saveTablist() {
-		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+		Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
 
 			@Override
 			public void run() {
@@ -40,7 +40,7 @@ public class Tablist {
 	
 	public static void loadTablist()
 	{
-		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+		Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
 
 			@Override
 			public void run() {

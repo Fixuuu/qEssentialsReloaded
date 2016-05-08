@@ -13,7 +13,7 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 public class Messages {
 	
 	public static void saveMessages() {
-		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+		Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
 
 			@Override
 			public void run() {
@@ -40,7 +40,7 @@ public class Messages {
 	
 	public static void loadMessages()
 	{
-		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+		Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
 
 			@Override
 			public void run() {

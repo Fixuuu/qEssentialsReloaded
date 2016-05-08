@@ -22,7 +22,7 @@ public class MessageFile {
 
 	public static void loadFile()
 	{
-		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+		Bukkit.getScheduler().runTask(Main.getInstance(), new Runnable() {
 
 			@Override
 			public void run() {

@@ -24,7 +24,7 @@ public class UpdaterImpl {
 		return currentVersion;
 	}
 
-	public static boolean checkUpdate() {
+	public static void checkUpdate() {
 		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
 			@Override
 			public void run() {
@@ -32,6 +32,7 @@ public class UpdaterImpl {
 					newestVersion = Util.readUrl("http://kavz.za.pl/plugins/qessentials/update.txt");
 				} catch (Exception e) {
 					e.printStackTrace();
+					return;
 				}
 				if (!currentVersion.equalsIgnoreCase(newestVersion)) {
 					actualVersion = false;
@@ -39,7 +40,6 @@ public class UpdaterImpl {
 				
 			}
 		});
-		return actualVersion;
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.bukkit.entity.Player;
 
 import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.interfaces.tab.TabExecutor;
@@ -58,8 +59,9 @@ public class TabExecutorImpl implements TabExecutor {
 	}
 
 	@Override
-	public void addSkin(Player player, String texture) {
-		//
+	public Property getProperty(String nickname) {
+		return null;
+		
 	}
 	
 	

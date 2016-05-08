@@ -209,6 +209,8 @@ public class Main extends JavaPlugin{
 	public void onEnable() {
 		startTime = System.currentTimeMillis();
 		l.info("[qEssentialsReloaded] Loading resources...");
+		l.info("[qEssentialsReloaded] Creating variables, connecting to SQLite and creating tables...");
+		new SQLite();
 		l.info("[qEssentialsReloaded] Instantiating object implementations...");
 		userManager = new UserManagerImpl();
 		messages = new MessagesImpl();
@@ -218,8 +220,6 @@ public class Main extends JavaPlugin{
 		teleportrequests = new TeleportRequestImpl();
 		messagecontainer = new MessageContainerImpl();
 		kitmanager = new KitManagerImpl();
-		l.info("[qEssentialsReloaded] Creating variables, connecting to SQLite and creating tables...");
-		new SQLite();
 		l.info("[qEssentialsReloaded] Doing some miscellaneous work...");
 		l.info("[qEssentialsReloaded] [Misc] Loading FunnyGuilds optionally...");
 		if (!Bukkit.getPluginManager().isPluginEnabled("FunnyGuilds")) {
