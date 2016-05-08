@@ -1,5 +1,7 @@
 package me.kavzaq.qEssentialsReloaded.impl;
 
+import org.bukkit.Bukkit;
+
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.utils.Util;
 
@@ -21,17 +23,22 @@ public class UpdaterImpl {
 	public static String getCurrentVersion() {
 		return currentVersion;
 	}
-	
-	// probowalem nowym watkiem to zrobic ale cos sie nie wykonywalo ._.
+
 	public static boolean checkUpdate() {
-		try {
-			newestVersion = Util.readUrl("http://kavz.za.pl/plugins/qessentials/update.txt");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		if (!currentVersion.equalsIgnoreCase(newestVersion)) {
-			actualVersion = false;
-		}
+		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+			@Override
+			public void run() {
+				try {
+					newestVersion = Util.readUrl("http://kavz.za.pl/plugins/qessentials/update.txt");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				if (!currentVersion.equalsIgnoreCase(newestVersion)) {
+					actualVersion = false;
+				}
+				
+			}
+		});
 		return actualVersion;
 	}
 

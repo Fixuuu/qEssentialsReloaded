@@ -24,7 +24,6 @@ public class KitManagerImpl implements KitManager {
 			KitImpl kit = new KitImpl(kitStr);
 			kit.setCooldown(cooldown * 1000);
 			kit.setItems(items);
-			
 			KitImpl.list.add(kit);
 		}
 	}
@@ -34,6 +33,9 @@ public class KitManagerImpl implements KitManager {
 		localsb.setLength(0);
 		for (String kitStr : Main.getInstance().getConfig().getConfigurationSection("kits").getKeys(false)){
 			localsb.append(", " + kitStr);
+		}
+		if (localsb.length() == 0) {
+			localsb.append("*none*");
 		}
 		return localsb.toString().replaceFirst(", ", "");
 	}

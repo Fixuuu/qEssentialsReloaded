@@ -27,6 +27,7 @@ public class HealCommand extends CommandImpl{
 				Player p = (Player)sender;
 				p.setHealth(20.0);
 				p.setFoodLevel(20);
+				p.setFireTicks(0);
 				Util.sendMessage(p, MessagesImpl.HEAL_SUCCESS);
 				return;
 			} else{
@@ -47,6 +48,7 @@ public class HealCommand extends CommandImpl{
 				}
 				other.setHealth(20.0);
 				other.setFoodLevel(20);
+				other.setFireTicks(0);
 				Util.sendMessage(sender, MessagesImpl.HEAL_OTHER_SUCCESS
 						.replace("%player%", other.getName()));
 				Util.sendMessage(other, MessagesImpl.HEAL_OTHER_HEALED

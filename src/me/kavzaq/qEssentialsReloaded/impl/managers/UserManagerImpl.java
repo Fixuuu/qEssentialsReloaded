@@ -7,11 +7,13 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.google.common.collect.Lists;
 
+import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.database.SQLite;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
 import me.kavzaq.qEssentialsReloaded.interfaces.managers.UserManager;
@@ -26,24 +28,30 @@ public class UserManagerImpl implements UserManager {
 	}
 	
 	public UserManagerImpl() {
-		Connection conn = SQLite.createConnection();
-		Statement stat;
-		try {
-			stat = conn.createStatement();
-			String query = "SELECT * FROM users";
-			
-			ResultSet rs = stat.executeQuery(query);
-			while (rs.next()) {
-				UserImpl user = new UserImpl(rs.getString("name"), 
-						UUID.fromString(rs.getString("uuid")));
-				user.setGod(false);
-				user.setHomes(SerializeUtils.deserializeList(rs.getString("homes")));
-				user.setKits(SerializeUtils.deserializeList(rs.getString("kits")));
-				users.add(user);
+		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+			@Override
+			public void run() {
+				Connection conn = SQLite.createConnection();
+				Statement stat;
+				try {
+					stat = conn.createStatement();
+					String query = "SELECT * FROM users";
+					
+					ResultSet rs = stat.executeQuery(query);
+					while (rs.next()) {
+						UserImpl user = new UserImpl(rs.getString("name"), 
+								UUID.fromString(rs.getString("uuid")));
+						user.setGod(false);
+						user.setHomes(SerializeUtils.deserializeList(rs.getString("homes")));
+						user.setKits(SerializeUtils.deserializeList(rs.getString("kits")));
+						users.add(user);
+					}
+				} catch (SQLException sqle) {
+					sqle.printStackTrace();
+				}
+				
 			}
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
-		}
+		});
 	}
 	
 	@Override
@@ -54,19 +62,12 @@ public class UserManagerImpl implements UserManager {
 		user.setHomes(Lists.newArrayList());
 		user.setKits(Lists.newArrayList());
 		
-		Connection conn = SQLite.createConnection();
-		Statement stat;
-		try {
-			stat = conn.createStatement();
-			String query = String.format("INSERT INTO `users` (`id`, `name`, `uuid`, `homes`, `kits`)"
-					+ " VALUES (NULL, '%s', '%s', '%s', '%s')", 
-					user.getName(), user.getUUID().toString(), SerializeUtils.serializeList(user.getHomes()),
-					SerializeUtils.serializeList(user.getKits()));
-			stat.execute(query);
-			users.add(user);
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
-		}
+		String query = String.format("INSERT INTO `users` (`id`, `name`, `uuid`, `homes`, `kits`)"
+				+ " VALUES (NULL, '%s', '%s', '%s', '%s')", 
+				user.getName(), user.getUUID().toString(), SerializeUtils.serializeList(user.getHomes()),
+				SerializeUtils.serializeList(user.getKits()));
+		SQLite.executeUpdate(query);
+		users.add(user);
 		return user;
 	}
 	

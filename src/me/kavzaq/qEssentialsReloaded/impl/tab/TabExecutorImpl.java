@@ -12,9 +12,7 @@ import me.kavzaq.qEssentialsReloaded.utils.Util;
 
 public class TabExecutorImpl implements TabExecutor {
 	
-	// zapomnialem dodac ze podjebane od karolka, 
-	// moze sie nie obrazi, i tak jego projekt pierdolnal.
-	// no ni chuja wiedzialem jak to zrobic :c
+	// inspirowane systemem Karolka, kappa.
 
 	public String[][] tabslots = new String[20][4];
 	private static final GameProfile[][] gameprofiles = new GameProfile[20][4];

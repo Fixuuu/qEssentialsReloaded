@@ -7,6 +7,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import org.bukkit.Bukkit;
+
 import me.kavzaq.qEssentialsReloaded.Main;
 
 public class SQLite {
@@ -45,6 +47,25 @@ public class SQLite {
 		createTables();
 	}
 	
+	public static void executeUpdate(String query) {
+		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					Connection conn = createConnection();
+					Statement stat = conn.createStatement();
+					stat.executeUpdate(query);
+					stat.close();
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		});
+	}
+	 
 	public static Connection createConnection() {
 		// connecting
 		Connection conn = null;
@@ -57,23 +78,15 @@ public class SQLite {
 	}
 	
 	private static void createTables() {
-		Connection conn = createConnection();
-		Statement stat;
-		try {
-			stat = conn.createStatement();
+		String queryUsers = 
+				"CREATE TABLE IF NOT EXISTS users ("
+				+ "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+				+ "name VARCHAR(20) NOT NULL, "
+				+ "uuid VARCHAR(36) NOT NULL, "
+				+ "homes VARCHAR(320),"
+				+ "kits VARCHAR(320))";
 			
-			String queryUsers = 
-					"CREATE TABLE IF NOT EXISTS users ("
-					+ "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-					+ "name VARCHAR(20) NOT NULL, "
-					+ "uuid VARCHAR(36) NOT NULL, "
-					+ "homes VARCHAR(320),"
-					+ "kits VARCHAR(320))";
-			
-			stat.execute(queryUsers);
-		} catch (SQLException sqle) {
-			sqle.printStackTrace();
-		}
+		executeUpdate(queryUsers);
 	}
 
 }

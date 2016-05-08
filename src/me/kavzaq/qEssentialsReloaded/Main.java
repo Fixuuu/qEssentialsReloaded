@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.logging.Logger;
 
+import org.apache.commons.lang.UnhandledException;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
@@ -194,9 +195,22 @@ public class Main extends JavaPlugin{
 	public void onLoad() {
 		l.info("[qEssentialsReloaded] [Preload] Instantiating java plugin...");
 		inst = this;
-		l.info("[qEssentialsReloaded] [Preload] Creating variables, connecting to SQLite and creating tables...");
-		new SQLite();
-		l.info("[qEssentialsReloaded] [Preload] Instantiating object implementations...");
+	}
+	
+	public void onDisable() {
+		try {
+			for (User user : getUserManager().getUsers()) {
+				user.save();
+			}
+		} catch (Exception e) {
+			// null
+		}
+	}
+	
+	public void onEnable() {
+		startTime = System.currentTimeMillis();
+		l.info("[qEssentialsReloaded] Loading resources...");
+		l.info("[qEssentialsReloaded] Instantiating object implementations...");
 		userManager = new UserManagerImpl();
 		messages = new MessagesImpl();
 		tabmanager = new TabManagerImpl();
@@ -205,17 +219,8 @@ public class Main extends JavaPlugin{
 		teleportrequests = new TeleportRequestImpl();
 		messagecontainer = new MessageContainerImpl();
 		kitmanager = new KitManagerImpl();
-	}
-	
-	public void onDisable() {
-		for (User user : getUserManager().getUsers()) {
-			user.save();
-		}
-	}
-	
-	public void onEnable() {
-		startTime = System.currentTimeMillis();
-		l.info("[qEssentialsReloaded] Loading resources...");
+		l.info("[qEssentialsReloaded] Creating variables, connecting to SQLite and creating tables...");
+		new SQLite();
 		l.info("[qEssentialsReloaded] Doing some miscellaneous work...");
 		l.info("[qEssentialsReloaded] [Misc] Loading FunnyGuilds optionally...");
 		if (!Bukkit.getPluginManager().isPluginEnabled("FunnyGuilds")) {
@@ -318,7 +323,7 @@ public class Main extends JavaPlugin{
 		
 		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new TPSMonitor(), 100L, 1);
 		l.info("[qEssentialsReloaded] Preloading tab...");
-		Main.getTabExecutor().loadTab();
+		new TabExecutorImpl().loadTab();
 		l.info("[qEssentialsReloaded] Configuring help paged map...");
 		PaginatorUtils.configureHelp();
 		l.info("[qEssentialsReloaded] Configuring enchantment aliases...");
@@ -326,11 +331,15 @@ public class Main extends JavaPlugin{
 		l.info("[qEssentialsReloaded] Configuring tablist messages...");
 		TablistUtils.configureMessages();
 		l.info("[qEssentialsReloaded] Loading kits...");
-		Main.getKitManager().load();
+		new KitManagerImpl().load();
 		loadTime = System.currentTimeMillis() - startTime;
 		l.info("[qEssentialsReloaded] Completed successfuly! (" + (loadTime) + "ms)");
 
-		UpdaterImpl.checkUpdate();
+		try {
+			UpdaterImpl.checkUpdate();
+		} catch (UnhandledException e) {
+			UpdaterImpl.checkUpdate();
+		}
 		if (!UpdaterImpl.isUpdated()) {
 			l.info("[qEssentialsReloaded] [Updater] New version is available!");
 			l.info("[qEssentialsReloaded] [Updater]   Newest version: " + UpdaterImpl.getNewestVersion());

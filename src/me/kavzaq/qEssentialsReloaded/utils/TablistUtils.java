@@ -13,8 +13,12 @@ import com.google.common.collect.Lists;
 import me.kavzaq.qEssentialsReloaded.Main;
 import me.kavzaq.qEssentialsReloaded.impl.TabConfigurationImpl;
 import me.kavzaq.qEssentialsReloaded.impl.UserImpl;
+import me.kavzaq.qEssentialsReloaded.runnables.tpsmonitor.TPSMonitor;
+import net.dzikoysk.funnyguilds.FunnyGuilds;
+import net.dzikoysk.funnyguilds.basic.Guild;
 import net.dzikoysk.funnyguilds.basic.User;
-import net.dzikoysk.funnyguilds.util.Parser;
+import net.dzikoysk.funnyguilds.basic.util.RankManager;
+import net.dzikoysk.funnyguilds.data.Settings;
 import net.dzikoysk.funnyguilds.util.runnable.Ticking;
 
 public class TablistUtils {
@@ -106,7 +110,17 @@ public class TablistUtils {
 	// {FLY} - is flying
 	// {OP} - is op
 	// {WHITELISTED} - is whitelisted
-	// {ONLINE}
+	// {ONLINE} - online players
+	// {TPS} - ticking monitor 
+	
+	// variables from FunnyGuilds
+	// {FG/TPS} - funnyguilds ticking monitor
+	// {FG/PING} - player ping
+	// {FG/POINTS} - rank
+	// {FG/KILLS} - kills
+	// {FG/DEATHS} - deaths
+	// {FG/GTOP-x} - top guilds
+	// {FG/PTOP-x} - top players
 	
 	// VARIABLE SUPPORT FROM GUILDS, RANKINGS ITD. WILL BE ADDED SOON (WHEN PLUGINS ON 1.9 WILL COME ON)
 	// variable support now:
@@ -143,19 +157,73 @@ public class TablistUtils {
 		string = StringUtils.replace(string, "{OP}", BooleanUtils.getParsedBooleanYesNo(player.isOp()));
 		string = StringUtils.replace(string, "{GOD}", BooleanUtils.getParsedBooleanYesNo(user.isGod()));
 		string = StringUtils.replace(string, "{WHITELISTED}", BooleanUtils.getParsedBooleanYesNo(player.isWhitelisted()));
+		
+		String tps = String.valueOf(TPSMonitor.getCurrentTPS()).contains("-1.0") ? "Calculating..." : 
+			String.valueOf(TPSMonitor.getCurrentTPS()); 
+		
+		string = StringUtils.replace(string, "{TPS}", tps);
+		
 		if (Main.funnyguilds_support) {
 			User fgu = User.get(player);
-			string = StringUtils.replace(string, "{TPS}", Ticking.getTPS());
-			string = StringUtils.replace(string, "{PING}", Integer.toString(fgu.getPing()));
-			string = StringUtils.replace(string, "{POINTS}", Integer.toString(fgu.getRank().getPoints()));
-			string = StringUtils.replace(string, "{KILLS}", Integer.toString(fgu.getRank().getKills()));
-			string = StringUtils.replace(string, "{DEATHS}", Integer.toString(fgu.getRank().getDeaths()));
+			string = StringUtils.replace(string, "{FG/TPS}", Ticking.getTPS());
+			string = StringUtils.replace(string, "{FG/PING}", Integer.toString(fgu.getPing()));
+			string = StringUtils.replace(string, "{FG/POINTS}", Integer.toString(fgu.getRank().getPoints()));
+			string = StringUtils.replace(string, "{FG/KILLS}", Integer.toString(fgu.getRank().getKills()));
+			string = StringUtils.replace(string, "{FG/DEATHS}", Integer.toString(fgu.getRank().getDeaths()));
 			
-			String parsedRank = Parser.parseRank(string);
+			String parsedRank = parseRank(string);
 			if (parsedRank != null) string = parsedRank;
 		}
 		return string;
 		
+	}
+	
+	// FunnyGuilds method / rank support
+	public static String parseRank(String string) {
+		if (!string.contains("TOP-")) return null;
+		StringBuilder sb = new StringBuilder();
+		boolean open = false;
+		boolean start = false;
+		for (char c : string.toCharArray()) {
+			boolean end = false;
+			switch (c) {
+			case '{':
+				open = true;
+				break;
+			case '-':
+				start = true;
+				break;
+			case '}':
+				end = true;
+				break;
+			default:
+				if (open && start) sb.append(c);
+			}
+			if (end) break;
+		}
+		try {
+			int i = Integer.valueOf(sb.toString());
+			if (string.contains("FG/GTOP")) {
+				Guild guild = RankManager.getInstance().getGuild(i);
+				if (guild != null) return StringUtils
+						.replace(string, "{FG/GTOP-" + Integer.toString(i) + '}',
+								guild.getTag() + " " +
+										StringUtils.replace(Settings.getInstance().playerlistPoints,
+												"{FG/POINTS}", Integer.toString(guild.getRank().getPoints()))
+								);
+				else return StringUtils
+						.replace(string, "{FG/GTOP-" + Integer.toString(i) + '}', "Brak");
+			} else if (string.contains("FG/PTOP")) {
+				User user = RankManager.getInstance().getUser(i);
+				if (user != null) return StringUtils
+						.replace(string, "{FG/PTOP-" + Integer.toString(i) + '}', user.getName());
+				else return StringUtils
+						.replace(string, "{FG/PTOP-" + Integer.toString(i) + '}', "Brak");
+			}
+		} catch (NumberFormatException e) {
+			FunnyGuilds.parser("Unknown number: " + sb.toString());
+		}
+		return null;
 	}
 
 }

@@ -3,6 +3,7 @@ package me.kavzaq.qEssentialsReloaded.io;
 import java.io.File;
 import java.io.IOException;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -21,20 +22,28 @@ public class MessageFile {
 
 	public static void loadFile()
 	{
-		if(!dataFolder.exists())
-		{
-			dataFolder.mkdirs();
-		}
-		else if(!messageFile.exists())
-		{
-			try{
-				messageFile.createNewFile();
-				return;
-			}catch(IOException ex) {
-				ex.printStackTrace();
+		Bukkit.getScheduler().runTaskAsynchronously(Main.getInstance(), new Runnable() {
+
+			@Override
+			public void run() {
+				if(!dataFolder.exists())
+				{
+					dataFolder.mkdirs();
+				}
+				else if(!messageFile.exists())
+				{
+					try{
+						messageFile.createNewFile();
+						return;
+					}catch(IOException ex) {
+						ex.printStackTrace();
+					}
+				}
+				
+				
 			}
-		}
-		
+			
+		});
 	}
 
 	public static FileConfiguration getFileConfiguration()
