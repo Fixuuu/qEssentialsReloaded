@@ -35,7 +35,7 @@ max-homes: 3
 ##                     Chat                       ##
 ####################################################
 # Default chat format
-chat-format: "&8[&c{HEALTH}/10.0&8] &8[&e{FOOD}/10&8] &7{PLAYER}&8: &f{MESSAGE}"
+chat-format: "&7{PLAYER}&8: &f{MESSAGE}"
 # Chat slowdown (in seconds)
 chat-slowdown: 3
 
@@ -43,11 +43,11 @@ chat-slowdown: 3
 ##                     Kits                       ##
 ####################################################
 kits:
-  custom:
+  start:
     cooldown: 20
     items:
-      - 'apple 5 Custom_Apple This_is;&dcolored_lore fireaspect:1;sharpness:3'
-      - 'diamond_sword 1 &6&lExcalibur &eMagic_sword_from;&eThe_dark_sides_of;&ethe_world fireaspect:10;sharpness:10;unbreaking:10'
+      - 'cooked_beef 64 &cJedzonko'
+      - 'stone_sword 1'
 
 ####################################################
 ##                  AutoMessage                   ##
@@ -56,8 +56,8 @@ kits:
 automessage-delay: 35
 # messages
 automessages:
-  - '&aDefault message #1'
-  - '&bDefault message #2'
-  - '&cDefault message #3'
+  - '&aWiadomosc 1'
+  - '&bWiadomosc 2'
+  - '&cWiadomosc 3'
   
 # End of file -> Seriously... stop, this is stupid.
